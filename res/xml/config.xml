@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="org.olpc-france.sugarizer" version="0.6.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Hello Cordova</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <content src="index.html" />
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Media">
+        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Accelerometer">
+        <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
+    </feature>
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <icon gap:density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
+    <icon gap:density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
+    <icon gap:density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
+    <icon gap:density="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
+    <icon gap:density="xxhdpi" src="res/icon/android/icon-144-xxhdpi.png" />
+    <icon gap:density="xxxhdpi" src="res/icon/android/icon-192-xxxhdpi.png" />
+    <name>Sugarizer</name>
+    <description>
+        A taste of the Sugar on any device.
+    </description>
+    <author email="lionel@olpc-france.org" href="http://olpc-france.org">
+        Lionel Laské for OLPC France
+    </author>
+    <preference name="fullscreen" value="true" />
+    <gap:config-file parent="/manifest/application" platform="android">
+        <activity android:screenOrientation="landscape" />
+    </gap:config-file>
+    <gap:config-file parent="UISupportedInterfaceOrientations" platform="ios">
+        <array>
+            <string>UIInterfaceOrientationLandscapeLeft</string>
+            <string>UIInterfaceOrientationLandscapeRight</string>
+        </array>
+    </gap:config-file>
+    <access origin="*" />
+    <preference name="android-minSdkVersion" value="13" />
+    <gap:plugin name="org.apache.cordova.media" version="0.2.12" />
+    <icon src="icon.png" />
+</widget>
