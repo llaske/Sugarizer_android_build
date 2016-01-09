@@ -1,8 +1,10 @@
 requirejs.config({
-    baseUrl: "lib",
-    paths: {
-        activity: "../js"
-    }
+  baseUrl: "lib",
+  shim: {},
+  paths: {
+    activity: "../js",
+    mustache: '../lib/mustache'
+  }
 });
 
 requirejs(["activity/activity"]);

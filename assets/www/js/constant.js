@@ -3,15 +3,20 @@
 // Constants 
 var constant = {};
 
-constant.sugarizerVersion = "0.6";
+constant.sugarizerVersion = "0.7";
 
 constant.sizeOwner = 100;
 constant.sizeJournal = 40;
-constant.sizeRadius = 200.0;
 constant.sizeEmpty = 50;
 constant.sizeSettings = 70;
 constant.sizeToolbar = 40;
 constant.sizeNeighbor = 40;
+constant.iconSpacingFactor = 1.1;
+constant.ringInitSpaceFactor = 2.2;
+constant.ringSpaceFactor = 1.3;
+constant.ringAdjustAngleFactor = 3.6;
+constant.ringAdjustSizeFactor = 0.9;
+constant.ringMinRadiusSize = 108;
 
 constant.radialView = 0;
 constant.listView = 1;
@@ -33,6 +38,9 @@ constant.dynamicInitActivitiesURL = "/api/activities/";
 constant.initNetworkURL = "/api/users/";
 constant.sendCloudURL = "/api/journal/";
 constant.filterJournalURL = "/filter/";
+constant.filterFieldURL = "/field/";
+constant.fieldMetadata = "metadata";
+constant.fieldText = "text";
 constant.defaultServer = "server.sugarizer.org";
 
 constant.iconSizeStandard = 55;
