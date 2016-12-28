@@ -1,16 +1,2 @@
-/**
-	_onyx.PickerButton_ is a button that, when tapped, shows an
-	<a href="#onyx.Picker">onyx.Picker</a>. Once an item is selected, the list
-	of items closes, but the item stays selected and the PickerButton displays
-	the choice that was made.
- */
-enyo.kind({
-	name: "onyx.PickerButton",
-	kind: "onyx.Button",
-	handlers: {
-		onChange: "change"
-	},
-	change: function(inSender, inEvent) {
-		this.setContent(inEvent.content);
-	}
-});
+/*! Sugarizer 2016-12-28 */
+enyo.kind({name:"onyx.PickerButton",kind:"onyx.Button",handlers:{onChange:"change"},change:function(a,b){this.setContent(b.content)}});

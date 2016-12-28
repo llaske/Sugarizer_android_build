@@ -1,8 +1,2 @@
-requirejs.config({
-    baseUrl: "lib",
-    paths: {
-        activity: "../js"
-    }
-});
-
-requirejs(["activity/activity"]);
+/*! Sugarizer 2016-12-28 */
+var l10n_s;requirejs.config({baseUrl:"lib",paths:{activity:"../js"}}),requirejs(["activity/activity"]),requirejs(["webL10n","sugar-web/env"],function(a,b){function c(a){var c={name:"",language:navigator.language};if(!b.isSugarizer())return void a(c);if("undefined"!=typeof chrome&&chrome.app&&chrome.app.runtime){var d=JSON.parse(values.sugar_settings);chrome.storage.local.get("sugar_settings",function(b){a(d)})}else{var d=JSON.parse(localStorage.sugar_settings);a(d)}}l10n_s=a,c(function(a){l10n_s.language.code=a.language})});

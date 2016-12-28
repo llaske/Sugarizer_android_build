@@ -1,19 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.olpc-france.sugarizer" version="0.7.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.olpc-france.sugarizer" version="0.8.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
-    </feature>
-    <feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Media">
-        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
-    </feature>
-    <feature name="Camera">
-        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
     <feature name="Accelerometer">
         <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
@@ -30,7 +20,32 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
-    <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Vibration">
+        <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
+    </feature>
+    <feature name="AndroidFullScreen">
+        <param name="android-package" value="com.mesmotronic.plugins.FullScreenPlugin" />
+    </feature>
+    <feature name="VolumeControl">
+        <param name="android-package" value="com.develcode.plugins.volumeControl.VolumeControl" />
+    </feature>
+    <feature name="Media">
+        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
     <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
     <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
     <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
@@ -39,15 +54,15 @@
     <icon density="xxxhdpi" src="res/icon/android/icon-192-xxxhdpi.png" />
     <name>Sugarizer</name>
     <description>
-        A taste of the Sugar on any device.
-    </description>
+		A taste of the Sugar on any device.
+	</description>
     <author email="lionel@olpc-france.org" href="http://olpc-france.org">
-        Lionel Laské for OLPC France
-    </author>
+		Lionel Laské for OLPC France
+	</author>
     <preference name="Fullscreen" value="true" />
     <preference name="Orientation" value="landscape" />
+    <preference name="windows-target-version" value="10.0" />
     <content src="index.html" />
     <access origin="*" />
-    <preference name="android-minSdkVersion" value="13" />
-    <icon src="icon.png" />
+    <preference name="android-minSdkVersion" value="14" />
 </widget>

@@ -1,26 +1,2 @@
-var app;
-var sound;
-
-define(function (require) {
-    var activity = require("sugar-web/activity/activity");
-
-    // Manipulate the DOM only when it is ready.
-    require(['domReady!'], function (doc) {
-        // Initialize the activity.
-        activity.setup();
-		
-		// Create sound component
-		sound = new TamTam.Audio();
-		sound.renderInto(document.getElementById("audio"));
-		
-		// Launch main screen
-		app = new TamTam.App({activity: activity});
-        app.renderInto(document.getElementById("keyboard"));
-
-        // Stop sound at end of game to sanitize media environment, specifically on Android
-        document.getElementById("stop-button").addEventListener('click', function (event) {
-			sound.pause();
-        });
-    });
-
-});
+/*! Sugarizer 2016-12-28 */
+var app,sound;define(["sugar-web/activity/activity"],function(a){require(["domReady!"],function(b){a.setup(),sound=new TamTam.Audio,sound.renderInto(document.getElementById("audio")),app=new TamTam.App({activity:a}),app.renderInto(document.getElementById("keyboard")),document.getElementById("stop-button").addEventListener("click",function(a){sound.pause()})})});

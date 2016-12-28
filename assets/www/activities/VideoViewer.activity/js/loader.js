@@ -1,0 +1,2 @@
+/*! Sugarizer 2016-12-28 */
+requirejs.config({baseUrl:"lib",paths:{activity:"../js"}});var getUrlParameter=function(a){var b=RegExp("[?&]"+a+"=([^&]*)").exec(window.location.search);return b&&decodeURIComponent(b[1].replace(/\+/g," "))};getUrlParameter("onsugar")||requirejs(["activity/activity"]);

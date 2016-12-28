@@ -1,25 +1,2 @@
-//* Canvas control that draws a text string.
-enyo.kind({
-	name: "enyo.canvas.Text",
-	kind: enyo.canvas.Shape,
-	published: {
-		//* The text to draw
-		text: "",
-		//* CSS font specification used to select a font for drawing
-		font: "12pt Arial",
-		//* Text alignment within the rectangle specified by the _bounds_ property
-		align: "left"
-	},
-	//* @protected
-	renderSelf: function(ctx) {
-		ctx.textAlign = this.align;
-		ctx.font = this.font;
-		this.draw(ctx);
-	},
-	fill: function(ctx) {
-		ctx.fillText(this.text, this.bounds.l, this.bounds.t);
-	},
-	outline: function(ctx) {
-		ctx.strokeText(this.text, this.bounds.l, this.bounds.t);
-	}
-});
+/*! Sugarizer 2016-12-28 */
+enyo.kind({name:"enyo.canvas.Text",kind:enyo.canvas.Shape,published:{text:"",font:"12pt Arial",align:"left"},renderSelf:function(a){a.textAlign=this.align,a.font=this.font,this.draw(a)},fill:function(a){a.fillText(this.text,this.bounds.l,this.bounds.t)},outline:function(a){a.strokeText(this.text,this.bounds.l,this.bounds.t)}});

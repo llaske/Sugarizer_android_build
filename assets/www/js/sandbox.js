@@ -1,12 +1,2 @@
-
-// Compute window frame size - used only for Chrome App
-function computeSize() {
-	document.getElementById("sugarizerframe").height = window.innerHeight;
-}
-computeSize();
-window.onresize = computeSize;
-
-// Process quit application
-window.addEventListener('message', function(event) {
-	chrome.app.window.current().close();
-});
+/*! Sugarizer 2016-12-28 */
+function computeSize(){document.getElementById("sugarizerframe").height=window.innerHeight}computeSize(),window.onresize=computeSize,window.addEventListener("message",function(a){chrome.app.window.current().close()});

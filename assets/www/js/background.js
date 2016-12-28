@@ -1,11 +1,2 @@
-
-
-// Chrome App entry point, needed only when in Chrome App
-chrome.app.runtime.onLaunched.addListener(function() {
-	// Create window
-	var mainwin = chrome.app.window.create('../sandbox.html', {
-		id: "mainwin",
-		state: "fullscreen"
-	},function(created) {
-	});
-});
+/*! Sugarizer 2016-12-28 */
+chrome.app.runtime.onLaunched.addListener(function(){chrome.app.window.create("../sandbox.html",{id:"mainwin",state:"fullscreen"},function(a){})});

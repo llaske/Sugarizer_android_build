@@ -1,22 +1,2 @@
-/* Clear button will clear the canvas */
-define([], function() {
-  function onClearClick() {
-    PaintApp.clearCanvas();
-
-    /* If the activity is shared, will send the instruction to everyone */
-    if (PaintApp.data.isShared) {
-      PaintApp.collaboration.sendMessage({
-        action: 'clearCanvas'
-      });
-    }
-  }
-
-  function initGui() {
-    var clearButton = document.getElementById('clear-button');
-    clearButton.addEventListener('click', onClearClick);
-  }
-  var clearButton = {
-    initGui: initGui
-  };
-  return clearButton;
-});
+/*! Sugarizer 2016-12-28 */
+define([],function(){function a(){PaintApp.clearCanvas(),PaintApp.data.isShared&&PaintApp.collaboration.sendMessage({action:"clearCanvas"})}function b(){var b=document.getElementById("clear-button");b.addEventListener("click",a)}var c={initGui:b};return c});

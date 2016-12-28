@@ -1,25 +1,2 @@
-/* Undo button will undo the canvas using the history */
-define([], function() {
-  function undo() {
-    var data = PaintApp.undoCanvas();
-  }
-
-  function initGui() {
-    var undoButton = document.getElementById('undo-button');
-    PaintApp.elements.undoButton = undoButton;
-    undoButton.addEventListener('click', undo);
-  }
-
-  function hideGui() {
-    var undoButton = document.getElementById('undo-button');
-    PaintApp.elements.undoButton = undoButton;
-    PaintApp.elements.undoButton.disabled = true;
-  }
-
-  var undoButton = {
-    initGui: initGui,
-    hideGui: hideGui
-  };
-
-  return undoButton;
-});
+/*! Sugarizer 2016-12-28 */
+define([],function(){function a(){PaintApp.undoCanvas()}function b(){var b=document.getElementById("undo-button");PaintApp.elements.undoButton=b,b.addEventListener("click",a)}function c(){var a=document.getElementById("undo-button");PaintApp.elements.undoButton=a,PaintApp.elements.undoButton.disabled=!0}var d={initGui:b,hideGui:c};return d});
