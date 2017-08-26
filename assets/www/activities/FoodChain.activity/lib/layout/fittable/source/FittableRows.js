@@ -1,2 +1,2 @@
-/*! Sugarizer 2016-12-28 */
+/*! Sugarizer 2017-08-25 */
 enyo.kind({name:"enyo.FittableRows",layoutKind:"FittableRowsLayout",noStretch:!1});

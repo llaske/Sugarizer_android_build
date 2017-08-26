@@ -1,2 +1,2 @@
-/*! Sugarizer 2016-12-28 */
+/*! Sugarizer 2017-08-25 */
 define(["sugar-web/activity/activity","sugar-web/graphics/radiobuttonsgroup"],function(a,b){var c;require(["domReady!"],function(d){a.setup(),document.getElementById("new-game-button").onclick=function(){c.doRenew()};new b.RadioButtonsGroup([document.getElementById("level-easy-button"),document.getElementById("level-medium-button"),document.getElementById("level-hard-button")]);document.getElementById("switch-player-button").onclick=function(){c.switchPlayer()},c=new LOLGameApp({activity:a}),c.load(),c.renderInto(document.getElementById("canvas"))})});

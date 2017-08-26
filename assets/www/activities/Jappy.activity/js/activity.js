@@ -1,0 +1,2 @@
+/*! Sugarizer 2017-08-25 */
+define(["sugar-web/env","sugar-web/activity/activity"],function(a,b){require(["domReady!"],function(a){compiler=RapydScript.create_embedded_compiler(),event_bus=riot.observable(),riot.parsers.js.Rapyd=function(a,b){return compiler.compile(a)},riot.compile(function(){riot.mount("*");try{b.setup(),setTimeout(function(){event_bus.trigger("activity-ready",b)},100)}catch(a){event_bus.trigger("activity-not-ready",a)}})})});

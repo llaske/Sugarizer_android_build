@@ -1,2 +1,2 @@
-/*! Sugarizer 2016-12-28 */
+/*! Sugarizer 2017-08-25 */
 define(["sugar-web/activity/activity"],function(a){require(["domReady!"],function(b){a.setup()})});

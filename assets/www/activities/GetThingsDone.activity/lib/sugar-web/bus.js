@@ -1,2 +1,2 @@
-/*! Sugarizer 2016-12-28 */
+/*! Sugarizer 2017-08-25 */
 define(["sugar-web/env","sugar-web/bus/sugarizer","sugar-web/bus/sugaros"],function(a,b,c){"use strict";var d;return d=a.isSugarizer()?b:c});

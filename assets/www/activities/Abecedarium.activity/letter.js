@@ -1,2 +1,2 @@
-/*! Sugarizer 2016-12-28 */
+/*! Sugarizer 2017-08-25 */
 enyo.kind({name:"Abcd.Letter",kind:"Abcd.Item",published:{letter:""},classes:"itemLetter",showing:!1,components:[{name:"itemImage",kind:"Image",classes:"itemImage",onload:"imageLoaded"}],create:function(){this.inherited(arguments),this.letterChanged(),this.selectedChanged()},imageLoaded:function(){""!==this.letter&&this.show()},setLocale:function(){},letterChanged:function(){""!==this.letter&&(this.letter=this.letter.toLowerCase(),this.$.itemImage.setAttribute("src","images/letters/"+this.letter+Abcd.context.casevalue+".png"))},play:function(a){a.play(Abcd.context.getDatabase()+"audio/"+Abcd.context.lang+"/database/upper_"+this.letter.toUpperCase())}});

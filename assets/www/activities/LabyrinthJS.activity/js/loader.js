@@ -1,2 +1,2 @@
-/*! Sugarizer 2016-12-28 */
-requirejs.config({baseUrl:"lib",paths:{activity:"../js"}}),requirejs(["activity/activity"]);
+/*! Sugarizer 2017-08-25 */
+var l10n_s;requirejs.config({baseUrl:"lib",paths:{activity:"../js"}}),requirejs(["activity/activity"]),requirejs(["webL10n","sugar-web/env","sugar-web/datastore"],function(a,b,c){l10n_s=a});

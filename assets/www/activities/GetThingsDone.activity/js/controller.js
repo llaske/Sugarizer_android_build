@@ -1,2 +1,2 @@
-/*! Sugarizer 2016-12-28 */
+/*! Sugarizer 2017-08-25 */
 define(function(a){var b={};return b.Controller=function(a,b){this.model=a,this.view=b,this.ENTER_KEY=13,this.ESCAPE_KEY=27},b.Controller.prototype.loadItems=function(a){this.model.load(a);var b=document.getElementById("todo-list");b.innerHTML=this.view.show(a)},b.Controller.prototype.addItem=function(a){if(""===a.trim())return!1;var b=this.model.create(a),c=document.getElementById("todo-list");return c.innerHTML+=this.view.show([b]),!0},b.Controller.prototype.removeItem=function(a){this.model.remove(a),this.loadItems(this.model.items)},b.Controller.prototype.toggleComplete=function(a,b){var c=b.checked?1:0;this.model.update(a,{completed:c}),this.loadItems(this.model.items)},b});
