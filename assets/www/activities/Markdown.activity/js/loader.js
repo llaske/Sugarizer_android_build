@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-08-25 */
+/*! Sugarizer 2017-09-04 */
 var l10n_s;requirejs.config({baseUrl:"lib",paths:{activity:"../js",markdownconverter:"../lib/Markdown.Converter",markdowneditor:"../lib/Markdown.Editor",markdownsanitizer:"../lib/Markdown.Sanitizer"}}),requirejs(["activity/activity"]),requirejs(["webL10n","sugar-web/env","moment-with-locales.min","sugar-web/datastore"],function(a,b,c,d){function e(a){var c={name:"",language:"undefined"!=typeof chrome&&chrome.app&&chrome.app.runtime?chrome.i18n.getUILanguage():navigator.language};return b.isSugarizer()?(loadedSettings=d.localStorage.getValue("sugar_settings"),void a(loadedSettings)):void a(c)}l10n_s=a,d.localStorage.load(function(){e(function(a){l10n_s.language.code=a.language,c.locale(a.language)})})});

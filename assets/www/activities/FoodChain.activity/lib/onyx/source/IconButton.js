@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-08-25 */
+/*! Sugarizer 2017-09-04 */
 enyo.kind({name:"onyx.IconButton",kind:"onyx.Icon",published:{active:!1},classes:"onyx-icon-button",rendered:function(){this.inherited(arguments),this.activeChanged()},tap:function(){this.setActive(!0)},activeChanged:function(){this.bubble("onActivate")}});

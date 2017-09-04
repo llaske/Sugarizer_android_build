@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-08-25 */
+/*! Sugarizer 2017-09-04 */
 define([],function(){function a(){PaintApp.redoCanvas()}function b(){var b=document.getElementById("redo-button");PaintApp.elements.redoButton=b,b.addEventListener("click",a)}function c(){var a=document.getElementById("redo-button");PaintApp.elements.redoButton=a,PaintApp.elements.redoButton.disabled="none"}var d={initGui:b,hideGui:c};return d});

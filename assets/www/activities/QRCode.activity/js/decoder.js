@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-08-25 */
+/*! Sugarizer 2017-09-04 */
 var Decoder={};Decoder.rsDecoder=new ReedSolomonDecoder(GF256.QR_CODE_FIELD),Decoder.correctErrors=function(a,b){for(var c=a.length,d=new Array(c),e=0;e<c;e++)d[e]=255&a[e];var f=a.length-b;try{Decoder.rsDecoder.decode(d,f)}catch(a){throw a}for(var e=0;e<b;e++)a[e]=d[e]},Decoder.decode=function(a){for(var b=new BitMatrixParser(a),c=b.readVersion(),d=b.readFormatInformation().ErrorCorrectionLevel,e=b.readCodewords(),f=DataBlock.getDataBlocks(e,c,d),g=0,h=0;h<f.length;h++)g+=f[h].NumDataCodewords;for(var i=new Array(g),j=0,k=0;k<f.length;k++){var l=f[k],m=l.Codewords,n=l.NumDataCodewords;Decoder.correctErrors(m,n);for(var h=0;h<n;h++)i[j++]=m[h]}var o=new QRCodeDataBlockReader(i,c.VersionNumber,d.Bits);return o};

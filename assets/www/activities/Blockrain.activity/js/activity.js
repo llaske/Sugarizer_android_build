@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-08-25 */
+/*! Sugarizer 2017-09-04 */
 define(["sugar-web/activity/activity"],function(a){require(["domReady!"],function(b){function c(a){var b=Object.keys(BlockrainThemes),c=d.blockrain("theme"),e=b.indexOf(c);a?e++:e--,e>=b.length&&(e=0),e<0&&(e=b.length-1),d.blockrain("theme",b[e])}a.setup();var d=$("#canvas").blockrain({speed:20,theme:"candy",autoplay:!1,autoplayRestart:!0,autoBlockWidth:!0,autoBlockSize:24,touchControls:!0,onStart:function(){},onRestart:function(){},onLine:function(a,b,c){}});document.getElementById("btn-next").onclick=function(){c(!0)}})});

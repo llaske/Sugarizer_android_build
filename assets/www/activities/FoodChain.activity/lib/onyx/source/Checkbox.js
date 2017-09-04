@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-08-25 */
+/*! Sugarizer 2017-09-04 */
 enyo.kind({name:"onyx.Checkbox",classes:"onyx-checkbox",kind:enyo.Checkbox,tag:"div",handlers:{ondown:"downHandler",onclick:""},downHandler:function(a,b){return this.disabled||(this.setChecked(!this.getChecked()),this.bubble("onchange")),!0},tap:function(a,b){return!this.disabled}});

@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-08-25 */
+/*! Sugarizer 2017-09-04 */
 enyo.kind({name:"onyx.InputDecorator",kind:"enyo.ToolDecorator",tag:"label",classes:"onyx-input-decorator",handlers:{onDisabledChange:"disabledChange",onfocus:"receiveFocus",onblur:"receiveBlur"},receiveFocus:function(){this.addClass("onyx-focused")},receiveBlur:function(){this.removeClass("onyx-focused")},disabledChange:function(a,b){this.addRemoveClass("onyx-disabled",b.originator.disabled)}});

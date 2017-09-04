@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-08-25 */
+/*! Sugarizer 2017-09-04 */
 enyo.kind({name:"onyx.Icon",published:{src:""},classes:"onyx-icon",create:function(){this.inherited(arguments),this.src&&this.srcChanged()},srcChanged:function(){this.applyStyle("background-image","url("+enyo.path.rewrite(this.src)+")")}});
