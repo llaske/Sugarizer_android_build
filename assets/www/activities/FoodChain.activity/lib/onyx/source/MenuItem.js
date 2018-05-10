@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-09-04 */
+/*! Sugarizer 2018-05-08 */
 enyo.kind({name:"onyx.MenuItem",kind:"enyo.Button",tag:"div",classes:"onyx-menu-item",events:{onSelect:""},tap:function(a){this.inherited(arguments),this.bubble("onRequestHideMenu"),this.doSelect({selected:this,content:this.content})}});

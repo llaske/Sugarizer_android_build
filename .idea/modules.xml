@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CordovaLib/CordovaLib.iml" filepath="$PROJECT_DIR$/CordovaLib/CordovaLib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cordova-plugin-sugarizeros/sugarizer-SugarizerOSLibrary/SugarizerOSLibrary.iml" filepath="$PROJECT_DIR$/cordova-plugin-sugarizeros/sugarizer-SugarizerOSLibrary/SugarizerOSLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/Sugarizer_fdroid.iml" filepath="$PROJECT_DIR$/Sugarizer_fdroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cordova-plugin-sugarizeros/cordova-plugin-sugarizeros.iml" filepath="$PROJECT_DIR$/cordova-plugin-sugarizeros/cordova-plugin-sugarizeros.iml" />
     </modules>
   </component>
 </project>

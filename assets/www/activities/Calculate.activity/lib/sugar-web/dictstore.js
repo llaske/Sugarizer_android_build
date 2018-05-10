@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-09-04 */
+/*! Sugarizer 2018-05-08 */
 define(["sugar-web/activity/activity","sugar-web/env"],function(a,b){"use strict";var c={};return c.init=function(c){if(b.isStandalone())c();else{localStorage.clear();var d=function(a,b,d){var e=JSON.parse(d);for(var f in e)localStorage[f]=e[f];c()};a.getDatastoreObject().loadAsText(d)}},c.save=function(c){if(void 0===c&&(c=function(){}),b.isStandalone())c();else{var d=a.getDatastoreObject(),e=JSON.stringify(localStorage);d.setDataAsText(e),d.save(function(a){c(a)})}},c});

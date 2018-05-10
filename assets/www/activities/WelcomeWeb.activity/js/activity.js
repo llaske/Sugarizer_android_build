@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-09-04 */
+/*! Sugarizer 2018-05-08 */
 define(["sugar-web/activity/activity","sugar-web/datastore","activity/model","activity/view","activity/controller"],function(a,b,c,d,e){require(["domReady!"],function(b){a.setup()})});

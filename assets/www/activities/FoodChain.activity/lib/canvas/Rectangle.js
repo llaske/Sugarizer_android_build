@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-09-04 */
+/*! Sugarizer 2018-05-08 */
 enyo.kind({name:"enyo.canvas.Rectangle",kind:enyo.canvas.Shape,published:{clear:!1},renderSelf:function(a){this.clear?a.clearRect(this.bounds.l,this.bounds.t,this.bounds.w,this.bounds.h):this.draw(a)},fill:function(a){a.fillRect(this.bounds.l,this.bounds.t,this.bounds.w,this.bounds.h)},outline:function(a){a.strokeRect(this.bounds.l,this.bounds.t,this.bounds.w,this.bounds.h)}});

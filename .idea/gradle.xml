@@ -9,8 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/CordovaLib" />
-            <option value="$PROJECT_DIR$/cordova-plugin-sugarizeros" />
-            <option value="$PROJECT_DIR$/cordova-plugin-sugarizeros/sugarizer-SugarizerOSLibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

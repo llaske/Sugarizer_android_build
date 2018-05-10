@@ -1,5 +1,3 @@
 // GENERATED FILE - DO NOT EDIT
 include ":"
 include ":CordovaLib"
-include ":cordova-plugin-sugarizeros:SugarizerOSLibrary"
-project(":cordova-plugin-sugarizeros:SugarizerOSLibrary").projectDir = new File("cordova-plugin-sugarizeros/sugarizer-SugarizerOSLibrary")

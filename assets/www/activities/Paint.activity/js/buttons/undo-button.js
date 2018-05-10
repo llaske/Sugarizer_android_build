@@ -1,2 +1,2 @@
-/*! Sugarizer 2017-09-04 */
+/*! Sugarizer 2018-05-08 */
 define([],function(){function a(){PaintApp.undoCanvas()}function b(){var b=document.getElementById("undo-button");PaintApp.elements.undoButton=b,b.addEventListener("click",a)}function c(){var a=document.getElementById("undo-button");PaintApp.elements.undoButton=a,PaintApp.elements.undoButton.disabled=!0}var d={initGui:b,hideGui:c};return d});
