@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-05-08 */
+/*! Sugarizer 2018-07-01 */
 define(["sugar-web/activity/activity","sugar-web/datastore"],function(a,b){activity=a,require(["domReady!"],function(a){activity.setup();var b=activity.getDatastoreObject();loadGallery(null),appInit(),b.loadAsText(function(a,b,c){loadGallery(JSON.parse(c));for(var d=0;d<thumbcnvs.length;d++)drawThumb(thumbcnvs[d],gallery[d]);"edit"==mode?editMode():selectorMode(),loadPos(selected)})})});

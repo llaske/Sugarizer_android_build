@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-05-08 */
+/*! Sugarizer 2018-07-01 */
 var l10n_s;requirejs.config({baseUrl:"lib",paths:{activity:"../js"}}),requirejs(["activity/activity"]),requirejs(["webL10n","sugar-web/env","moment-with-locales.min"],function(a,b,c){l10n_s=a,b.getEnvironment(function(a,b){var d="undefined"!=typeof chrome&&chrome.app&&chrome.app.runtime?chrome.i18n.getUILanguage():navigator.language,e=b.user?b.user.language:d;l10n_s.language.code=e,c.locale(e)})});

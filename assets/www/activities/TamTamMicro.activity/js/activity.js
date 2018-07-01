@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-05-08 */
+/*! Sugarizer 2018-07-01 */
 var app,sound;define(["sugar-web/activity/activity"],function(a){require(["domReady!"],function(b){a.setup(),sound=new TamTam.Audio,sound.renderInto(document.getElementById("audio")),app=new TamTam.App({activity:a}),app.renderInto(document.getElementById("keyboard")),document.getElementById("stop-button").addEventListener("click",function(a){sound.pause()})})});

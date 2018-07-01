@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-05-08 */
+/*! Sugarizer 2018-07-01 */
 enyo.kind({name:"onyx.PickerDecorator",kind:"onyx.MenuDecorator",classes:"onyx-picker-decorator",defaultKind:"onyx.PickerButton",handlers:{onChange:"change"},change:function(a,b){this.waterfallDown("onChange",b)}});
