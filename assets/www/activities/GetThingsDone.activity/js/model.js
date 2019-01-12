@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-07-01 */
+/*! Sugarizer 2019-01-12 */
 define(function(a){var b={};return b.Model=function(){this.items=[]},b.Model.prototype.load=function(a){this.items=a},b.Model.prototype.create=function(a){a=a||"";var b={id:(new Date).getTime(),title:a.trim(),completed:0};return this.items.push(b),b},b.Model.prototype.remove=function(a){for(var b=0;b<this.items.length;b++)if(this.items[b].id==a){this.items.splice(b,1);break}},b.Model.prototype.update=function(a,b){for(var c=0;c<this.items.length;c++)if(this.items[c].id==a)for(var d in b)this.items[c][d]=b[d]},b});

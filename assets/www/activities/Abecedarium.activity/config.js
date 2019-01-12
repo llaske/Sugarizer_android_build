@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-07-01 */
+/*! Sugarizer 2019-01-12 */
 Abcd.context.database="http://server.sugarizer.org/activities/Abecedarium.activity/",Abcd.context.getDatabase=function(){return app&&app.hasDatabase?app.hasDatabase()?"":Abcd.context.database:""};

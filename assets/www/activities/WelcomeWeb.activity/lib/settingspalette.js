@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-07-01 */
+/*! Sugarizer 2018-11-02 */
 define(["widepalette","text!settingspalette.html","mustache"],function(a,b,c){"use strict";var d={};d.SettingsPalette=function(c,d){a.Palette.call(this,c,d),this.selectItemEvent=document.createEvent("CustomEvent"),this.selectItemEvent.initCustomEvent("selectItem",!0,!0,{item:void 0});var e=document.createElement("div");e.innerHTML=b,this.setContent([e])};var e=function(a,b,c){return this.getPalette().addEventListener(a,b,c)};return d.SettingsPalette.prototype=Object.create(a.Palette.prototype,{addEventListener:{value:e,enumerable:!0,configurable:!0,writable:!0}}),d});

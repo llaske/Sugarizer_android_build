@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-07-01 */
+/*! Sugarizer 2019-01-12 */
 enyo.kind({name:"Sugar.IconButton",kind:enyo.Control,published:{icon:null,text:null,colorized:!1,colorizedColor:null},classes:"icon-button",components:[{name:"icon",kind:"Sugar.Icon",size:20,x:6,y:6},{name:"text",classes:"icon-button-text"}],create:function(){this.inherited(arguments),this.iconChanged(),this.textChanged(),this.colorizedChanged(),"rtl"==l10n.language.direction&&(this.setAttribute("dir","rtl"),this.$.text.addClass("rtl-10"))},iconChanged:function(){this.$.icon.setIcon(this.icon)},textChanged:function(){this.$.text.setContent(this.text)},colorizedChanged:function(){this.colorized&&(this.$.icon.setColorized(this.colorized),this.$.icon.setColorizedColor(this.colorizedColor))}});

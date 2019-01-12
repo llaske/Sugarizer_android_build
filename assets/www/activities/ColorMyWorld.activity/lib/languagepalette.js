@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-07-01 */
-define(["languagepalette"],function(a){var b={};return b});
+/*! Sugarizer 2019-01-12 */
+define(["languagepalette"],function(a){return{}});

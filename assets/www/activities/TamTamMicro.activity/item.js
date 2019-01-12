@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-07-01 */
+/*! Sugarizer 2019-01-12 */
 enyo.kind({name:"TamTam.Item",kind:enyo.Control,published:{name:""},classes:"item",components:[{name:"itemImage",classes:"itemImage",kind:"Image",ontap:"play"}],create:function(){this.inherited(arguments),this.nameChanged(),this.sound=null},nameChanged:function(){this.$.itemImage.setAttribute("src","images/database/"+this.name+".png")},play:function(){this.$.itemImage.setAttribute("src","images/database/"+this.name+"sel.png"),null!=this.name&&(this.sound="audio/database/"+this.name,sound.play(this))},endofsound:function(){this.$.itemImage&&this.$.itemImage.setAttribute("src","images/database/"+this.name+".png")},abort:function(){this.endofsound()}});

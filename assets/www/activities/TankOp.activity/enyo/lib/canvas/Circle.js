@@ -1,2 +1,2 @@
-/*! Sugarizer 2018-07-01 */
+/*! Sugarizer 2019-01-12 */
 enyo.kind({name:"enyo.canvas.Circle",kind:enyo.canvas.Shape,renderSelf:function(a){a.beginPath(),a.arc(this.bounds.l,this.bounds.t,this.bounds.w,0,2*Math.PI),this.draw(a)}});

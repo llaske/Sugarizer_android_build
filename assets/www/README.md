@@ -44,12 +44,38 @@ To run **Sugarizer Application as Chrome Web App**, download it from the [Chrome
 
 ![](images/chromewebstore.png)
 
+To run **Sugarizer Application on GNU Linux/Mac OS/Windows**, you could use [electron](https://github.com/electron/electron). So first install Node.js and npm on your computer. See [here](http://nodejs.org/) for more information. Then install electron and specific modules for Sugarizer by running:
+
+	npm install
+
+Then launch Sugarizer for GNU Linux with:
+
+	npm start > /dev/null
+
+Or, for Mac OS/Windows, just:
+
+	npm start
+
+The "start" command has three possible arguments:
+
+* "--window" to open Sugarizer in a window (instead of fullscreen)
+* "--debug" to open Sugarizer with the debug console
+* "--init" to remove all existing Journal and settings (all will be lost)
+
+For example if you want to combine two arguments:
+
+	npm start -- --debug --window
+
 To run **Sugarizer Application from the Web Browser** (GNU Linux/Mac OS/Windows), you should launch it with a special option to enable access to local files.
 
 For **Chrome**, close ALL running instances of Chrome and re-launch it using the command line:
 
     chrome --allow-file-access-from-files index.html
 
+On Windows, you should launch:
+
+	"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --allow-file-access-from-files
+	
 On Mac OS, you should launch:
 
 	open -n /Applications/Google\ Chrome.app --args --allow-file-access-from-files
@@ -57,8 +83,8 @@ On Mac OS, you should launch:
 For **Firefox**, type in the address bar:
 
     about:config
-    
-Search for the `security.fileuri.strict_origin_policy` parameter and 
+
+Search for the `security.fileuri.strict_origin_policy` parameter and
 set it to `false`.
 
 For **Safari** go to the `Safari/Preferences...` menu, under Advanced panel check the *Show develop menu in menu bar* box. Then from the `Develop` menu, select *Disable local file restrictions*.
@@ -225,7 +251,7 @@ Then install specific component for Sugarizer by running:
 
 Finally launch:
 
-	grunt
+	grunt -v
 
 At the end of the process, the `build` directory will contain the optimized version of each file in a same directory that the initial one, so you could just copy files:
 

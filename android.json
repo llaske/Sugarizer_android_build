@@ -122,66 +122,59 @@
               "xml": "<provider android:authorities=\"${applicationId}.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"android.support.v4.content.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/provider_paths\" /></provider>",
               "count": 1
             }
-          ],
-          "/manifest/application": [],
-          "/manifest/application/activity": []
-        }
-      },
-      "config.xml": {
-        "parents": {
-          "/*": []
+          ]
         }
       }
     }
   },
   "installed_plugins": {
     "com.develcode.plugins.volumeControl": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-device-motion": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-dialogs": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-fullscreen": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-ios-longpress-fix": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-media": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-qrscanner": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-swift-support": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-vibration": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "org.olpc_france.sugarizeros"
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
     }
   },
   "dependent_plugins": {},
