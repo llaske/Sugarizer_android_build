@@ -1,0 +1,2 @@
+/*! Sugarizer 2019-09-21 */
+var tests=Object.keys(window.__karma__.files).filter(function(a){return/Spec\.js$/.test(a)});requirejs.config({baseUrl:"/base",paths:{"sugar-web":".",mustache:"lib/mustache",text:"lib/text",webL10n:"lib/webL10n"},deps:tests,callback:window.__karma__.start});
