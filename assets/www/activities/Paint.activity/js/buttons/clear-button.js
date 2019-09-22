@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-01-12 */
+/*! Sugarizer 2019-09-21 */
 define([],function(){function a(){PaintApp.clearCanvas(),PaintApp.data.isShared&&PaintApp.collaboration.sendMessage({action:"clearCanvas"})}function b(){document.getElementById("clear-button").addEventListener("click",a)}return{initGui:b}});

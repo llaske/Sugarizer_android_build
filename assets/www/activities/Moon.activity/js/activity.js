@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-01-12 */
+/*! Sugarizer 2019-09-21 */
 define(["sugar-web/activity/activity","activity/moon-activity","webL10n"],function(a,b,c){requirejs(["domReady!"],function(c){a.setup(),b.setup();var d=a.getDatastoreObject();d.loadAsText(function(a,c,d){null!=d&&b.initPrefs(d)}),document.getElementById("stop-button").addEventListener("click",function(a){var c=b.getPrefs();d.setDataAsText(c),console.log("writing..."),d.save(function(a){null===a?console.log("write done."):console.log("write failed.")})})})});

@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-01-12 */
+/*! Sugarizer 2019-09-21 */
 enyo.kind({name:"enyo.canvas.Shape",kind:enyo.canvas.Control,published:{color:"red",outlineColor:""},fill:function(a){a.fill()},outline:function(a){a.stroke()},draw:function(a){this.color&&(a.fillStyle=this.color,this.fill(a)),this.outlineColor&&(a.strokeStyle=this.outlineColor,this.outline(a))}});

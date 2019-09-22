@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-01-12 */
+/*! Sugarizer 2019-09-21 */
 enyo.kind({name:"onyx.TooltipDecorator",defaultKind:"onyx.Button",classes:"onyx-popup-decorator",handlers:{onenter:"enter",onleave:"leave"},enter:function(){this.requestShowTooltip()},leave:function(){this.requestHideTooltip()},tap:function(){this.requestHideTooltip()},requestShowTooltip:function(){this.waterfallDown("onRequestShowTooltip")},requestHideTooltip:function(){this.waterfallDown("onRequestHideTooltip")}});

@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-01-12 */
+/*! Sugarizer 2019-09-21 */
 define(function(a){var b={};return b.orders=["north","east","south","west"],b.orders.forEach(function(a,c){b[a]=c}),b.getOpposite=function(a){switch(a){case"north":return"south";case"south":return"north";case"east":return"west";case"west":return"east"}},b});

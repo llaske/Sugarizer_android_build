@@ -1,11 +1,12 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
   {
-    "id": "com.develcode.plugins.volumeControl.VolumeControl",
-    "file": "plugins/com.develcode.plugins.volumeControl/www/VolumeControl.js",
-    "pluginId": "com.develcode.plugins.volumeControl",
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
     "clobbers": [
-      "cordova.plugins.VolumeControl"
+      "cordova.InAppBrowser.open",
+      "window.open"
     ]
   },
   {
@@ -38,46 +39,6 @@ module.exports = [
     "pluginId": "cordova-plugin-camera",
     "clobbers": [
       "CameraPopoverHandle"
-    ]
-  },
-  {
-    "id": "cordova-plugin-device.device",
-    "file": "plugins/cordova-plugin-device/www/device.js",
-    "pluginId": "cordova-plugin-device",
-    "clobbers": [
-      "device"
-    ]
-  },
-  {
-    "id": "cordova-plugin-device-motion.Acceleration",
-    "file": "plugins/cordova-plugin-device-motion/www/Acceleration.js",
-    "pluginId": "cordova-plugin-device-motion",
-    "clobbers": [
-      "Acceleration"
-    ]
-  },
-  {
-    "id": "cordova-plugin-device-motion.accelerometer",
-    "file": "plugins/cordova-plugin-device-motion/www/accelerometer.js",
-    "pluginId": "cordova-plugin-device-motion",
-    "clobbers": [
-      "navigator.accelerometer"
-    ]
-  },
-  {
-    "id": "cordova-plugin-dialogs.notification",
-    "file": "plugins/cordova-plugin-dialogs/www/notification.js",
-    "pluginId": "cordova-plugin-dialogs",
-    "merges": [
-      "navigator.notification"
-    ]
-  },
-  {
-    "id": "cordova-plugin-dialogs.notification_android",
-    "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
-    "pluginId": "cordova-plugin-dialogs",
-    "merges": [
-      "navigator.notification"
     ]
   },
   {
@@ -254,6 +215,46 @@ module.exports = [
     "runs": true
   },
   {
+    "id": "cordova-plugin-device.device",
+    "file": "plugins/cordova-plugin-device/www/device.js",
+    "pluginId": "cordova-plugin-device",
+    "clobbers": [
+      "device"
+    ]
+  },
+  {
+    "id": "cordova-plugin-device-motion.Acceleration",
+    "file": "plugins/cordova-plugin-device-motion/www/Acceleration.js",
+    "pluginId": "cordova-plugin-device-motion",
+    "clobbers": [
+      "Acceleration"
+    ]
+  },
+  {
+    "id": "cordova-plugin-device-motion.accelerometer",
+    "file": "plugins/cordova-plugin-device-motion/www/accelerometer.js",
+    "pluginId": "cordova-plugin-device-motion",
+    "clobbers": [
+      "navigator.accelerometer"
+    ]
+  },
+  {
+    "id": "cordova-plugin-dialogs.notification",
+    "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+    "pluginId": "cordova-plugin-dialogs",
+    "merges": [
+      "navigator.notification"
+    ]
+  },
+  {
+    "id": "cordova-plugin-dialogs.notification_android",
+    "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
+    "pluginId": "cordova-plugin-dialogs",
+    "merges": [
+      "navigator.notification"
+    ]
+  },
+  {
     "id": "cordova-plugin-file-transfer.FileTransferError",
     "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
     "pluginId": "cordova-plugin-file-transfer",
@@ -334,27 +335,36 @@ module.exports = [
       "navigator.notification",
       "navigator"
     ]
+  },
+  {
+    "id": "com.develcode.plugins.volumeControl.VolumeControl",
+    "file": "plugins/com.develcode.plugins.volumeControl/www/VolumeControl.js",
+    "pluginId": "com.develcode.plugins.volumeControl",
+    "clobbers": [
+      "cordova.plugins.VolumeControl"
+    ]
   }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-  "com.develcode.plugins.volumeControl": "1.0",
+  "cordova-plugin-whitelist": "1.3.4",
+  "cordova-plugin-inappbrowser": "1.0.1",
   "cordova-plugin-camera": "2.4.0",
+  "cordova-plugin-file": "4.3.1",
   "cordova-plugin-device": "1.1.0",
   "cordova-plugin-device-motion": "1.2.0",
   "cordova-plugin-dialogs": "1.2.0",
-  "cordova-plugin-file": "4.3.1",
   "cordova-plugin-file-transfer": "1.6.0",
   "cordova-plugin-fullscreen": "1.1.0",
   "cordova-plugin-ios-longpress-fix": "1.1.0",
   "cordova-plugin-media": "1.0.1",
   "cordova-plugin-network-information": "1.1.0",
-  "cordova-plugin-qrscanner": "2.5.0",
+  "cordova-plugin-qrscanner": "3.0.1",
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-swift-support": "3.1.1",
   "cordova-plugin-vibration": "2.1.1",
-  "cordova-plugin-whitelist": "1.3.1"
+  "com.develcode.plugins.volumeControl": "1.0"
 };
 // BOTTOM OF METADATA
 });
