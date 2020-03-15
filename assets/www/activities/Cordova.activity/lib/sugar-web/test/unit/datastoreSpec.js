@@ -1,2 +1,0 @@
-/*! Sugarizer 2018-11-02 */
-define(["sugar-web/env","sugar-web/datastore"],function(a,b){"use strict";describe("Ensure the datastore object has an objectId",function(){it("should have objectId",function(){spyOn(a,"getObjectId").andCallFake(function(a){setTimeout(function(){a("objectId")},0)});var c=jasmine.createSpy(),d=new b.DatastoreObject;runs(function(){d.ensureObjectId(c)}),waitsFor(function(){return void 0!==d.objectId},"should have objectId received from the environment"),runs(function(){expect(c).toHaveBeenCalled()})})})});

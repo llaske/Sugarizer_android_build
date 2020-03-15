@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-09-21 */
+/*! Sugarizer 2020-03-14 */
 requirejs.config({baseUrl:"lib",shim:{easel:{exports:"createjs"}},paths:{activity:"../js",easel:"../lib/easeljs",twewn:"../lib/tweenjs",prefixfree:"../bower_components/prefixfree/prefixfree.min"},packages:[]}),requirejs(["activity/activity"]);

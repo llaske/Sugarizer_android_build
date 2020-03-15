@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-09-21 */
+/*! Sugarizer 2020-03-14 */
 var shadeColor=function(a,b){var c=parseInt(a.substring(1,3),16),d=parseInt(a.substring(3,5),16),e=parseInt(a.substring(5,7),16);return c=parseInt(c*(100+b)/100,10),d=parseInt(d*(100+b)/100,10),e=parseInt(e*(100+b)/100,10),c=c<255?c:255,d=d<255?d:255,e=e<255?e:255,"#"+(1===c.toString(16).length?"0"+c.toString(16):c.toString(16))+(1===d.toString(16).length?"0"+d.toString(16):d.toString(16))+(1===e.toString(16).length?"0"+e.toString(16):e.toString(16))};define(function(){return shadeColor});

@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-09-21 */
+/*! Sugarizer 2020-03-14 */
 var constant={};constant.pageCount=4,constant.librariesUrl=("https"==document.location.protocol.substr(0,5)?"https":"http")+"://sugarizer.org/content/videos.json",constant.videoType="mp4";

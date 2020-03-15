@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-09-21 */
+/*! Sugarizer 2020-03-14 */
 function computeSize(){document.getElementById("sugarizerframe").height=window.innerHeight}computeSize(),window.onresize=computeSize,window.addEventListener("message",function(a){chrome.app.window.current().close()});

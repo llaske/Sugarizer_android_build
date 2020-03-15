@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-09-21 */
+/*! Sugarizer 2020-03-14 */
 if("undefined"!=typeof chrome&&chrome.app&&chrome.app.runtime)chrome.storage.local.get("sugar_settings",function(a){a.sugar_settings||chrome.storage.local.set({sugar_settings:JSON.stringify({})})});else if("undefined"!=typeof Storage&&void 0!==window.localStorage)try{null===window.localStorage.getItem("sugar_settings")&&window.localStorage.setItem("sugar_settings",JSON.stringify({}))}catch(a){}

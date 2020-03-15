@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-09-21 */
+/*! Sugarizer 2020-03-14 */
 function sendError(a,b,c){debug(b.split("/").pop()+":"+c+" "+a)}function debug(){for(var a=arguments.length,b="",c=0;c<a-1;c++)b=b+arguments[c]+" ";b+=arguments[a-1],sendString(b)}function sendString(a){}window.onerror=sendError;

@@ -1,2 +1,2 @@
-/*! Sugarizer 2019-09-21 */
+/*! Sugarizer 2020-03-14 */
 function LOLGame(a){var b=Math.max(a,0),c=0;this.getLength=function(){return b},this.getPlayer=function(){return c},this.reverse=function(){return c=(c+1)%2,!0},this.play=function(a){return void 0===a||null==a||a<1||a>3||a>b?b:(b-=a,b>0&&(c=(c+1)%2),b)},this.endOfGame=function(){return 0==b},this.think=function(a){if(a>=1&&b>=2&&b<=4)return b-1;if(a>=2&&b>=6&&b<=8)return b-5;if(a>=3){var c=b-(4*Math.floor(b/4)+1);if(c>=1&&c<=3)return c;var d=b-(4*(Math.floor(b/4)-1)+1);if(d>=1&&d<=3)return d}return Math.floor(Math.random()*Math.min(3,b-1))+1}}

@@ -1,0 +1,2 @@
+/*! Sugarizer 2020-03-14 */
+function Paladict(a){this.dict=a,this.defaultDict=[].concat(a),this.changeDict=function(a){this.dict=[].concat(a)},this.getRandomWord=function(){var a=Math.floor(Math.random()*this.dict.length);return this.dict[a]}}define(function(){return Paladict});
