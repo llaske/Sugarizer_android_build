@@ -343,6 +343,14 @@ module.exports = [
     "clobbers": [
       "cordova.plugins.VolumeControl"
     ]
+  },
+  {
+    "id": "cordova-plugin-ionic-keyboard.keyboard",
+    "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
+    "pluginId": "cordova-plugin-ionic-keyboard",
+    "clobbers": [
+      "window.Keyboard"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -364,7 +372,8 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "4.1.0",
   "cordova-plugin-swift-support": "3.1.1",
   "cordova-plugin-vibration": "2.1.1",
-  "com.develcode.plugins.volumeControl": "1.0"
+  "com.develcode.plugins.volumeControl": "1.0",
+  "cordova-plugin-ionic-keyboard": "2.2.0"
 };
 // BOTTOM OF METADATA
 });

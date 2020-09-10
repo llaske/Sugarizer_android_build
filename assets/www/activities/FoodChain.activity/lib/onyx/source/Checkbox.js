@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-enyo.kind({name:"onyx.Checkbox",classes:"onyx-checkbox",kind:enyo.Checkbox,tag:"div",handlers:{ondown:"downHandler",onclick:""},downHandler:function(a,b){return this.disabled||(this.setChecked(!this.getChecked()),this.bubble("onchange")),!0},tap:function(a,b){return!this.disabled}});
+enyo.kind({name:"onyx.Checkbox",classes:"onyx-checkbox",kind:enyo.Checkbox,tag:"div",handlers:{ondown:"downHandler",onclick:""},downHandler:function(n,e){return this.disabled||(this.setChecked(!this.getChecked()),this.bubble("onchange")),!0},tap:function(n,e){return!this.disabled}});

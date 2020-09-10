@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-function Paladict(a){this.dict=a,this.defaultDict=[].concat(a),this.changeDict=function(a){this.dict=[].concat(a)},this.getRandomWord=function(){var a=Math.floor(Math.random()*this.dict.length);return this.dict[a]}}define(function(){return Paladict});
+function Paladict(t){this.dict=t,this.defaultDict=[].concat(t),this.changeDict=function(t){this.dict=[].concat(t)},this.getRandomWord=function(){var t=Math.floor(Math.random()*this.dict.length);return this.dict[t]}}define((function(){return Paladict}));

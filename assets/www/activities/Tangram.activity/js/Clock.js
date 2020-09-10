@@ -1,0 +1,1 @@
+var Clock={props:["time","text"],template:'\n    <div class="clock">{{ text }}{{ parsedClockTime }}</div>\n  ',computed:{parsedClockTime:function(){var t=this.time,pad=function(t,e){return("000"+t).slice(-1*e)},e=parseFloat(t).toFixed(3),o=(Math.floor(e/60/60),Math.floor(e/60)%60),r=Math.floor(e-60*o);e.slice(-3);return pad(o,2)+":"+pad(r,2)}}};

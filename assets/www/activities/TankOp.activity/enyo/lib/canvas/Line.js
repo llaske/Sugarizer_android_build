@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-enyo.kind({name:"enyo.canvas.Line",kind:enyo.canvas.Shape,renderSelf:function(a){a.save(),a.beginPath(),a.strokeStyle=this.bounds.Style,a.lineWidth=this.bounds.width,a.lineCap=this.bounds.cap,a.moveTo(this.bounds.start_x,this.bounds.start_y),a.lineTo(this.bounds.finish_x,this.bounds.finish_y),a.stroke(),a.restore()}});
+enyo.kind({name:"enyo.canvas.Line",kind:enyo.canvas.Shape,renderSelf:function(n){n.save(),n.beginPath(),n.strokeStyle=this.bounds.Style,n.lineWidth=this.bounds.width,n.lineCap=this.bounds.cap,n.moveTo(this.bounds.start_x,this.bounds.start_y),n.lineTo(this.bounds.finish_x,this.bounds.finish_y),n.stroke(),n.restore()}});

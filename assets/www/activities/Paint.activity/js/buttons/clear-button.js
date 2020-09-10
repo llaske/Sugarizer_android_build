@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-define([],function(){function a(){PaintApp.clearCanvas(),PaintApp.data.isShared&&PaintApp.collaboration.sendMessage({action:"clearCanvas"})}function b(){document.getElementById("clear-button").addEventListener("click",a)}return{initGui:b}});
+define([],(function(){function onClearClick(){PaintApp.clearCanvas(),PaintApp.data.isShared&&PaintApp.collaboration.sendMessage({action:"clearCanvas"})}return{initGui:function initGui(){document.getElementById("clear-button").addEventListener("click",onClearClick)}}}));

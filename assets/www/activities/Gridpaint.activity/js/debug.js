@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-function sendError(a,b,c){debug(b.split("/").pop()+":"+c+" "+a)}function debug(){for(var a=arguments.length,b="",c=0;c<a-1;c++)b=b+arguments[c]+" ";b+=arguments[a-1],sendString(b)}function sendString(a){}window.onerror=sendError;
+function sendError(n,r,o){debug(r.split("/").pop()+":"+o+" "+n)}function debug(){for(var n=arguments.length,r="",o=0;o<n-1;o++)r=r+arguments[o]+" ";sendString(r+=arguments[n-1])}function sendString(n){}window.onerror=sendError;

@@ -128,6 +128,16 @@
             }
           ]
         }
+      },
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.CDVIonicKeyboard\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
       }
     }
   },
@@ -181,6 +191,9 @@
       "PACKAGE_NAME": "org.olpc_france.sugarizer"
     },
     "com.develcode.plugins.volumeControl": {
+      "PACKAGE_NAME": "org.olpc_france.sugarizer"
+    },
+    "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "org.olpc_france.sugarizer"
     }
   },
@@ -529,6 +542,14 @@
       "clobbers": [
         "cordova.plugins.VolumeControl"
       ]
+    },
+    {
+      "id": "cordova-plugin-ionic-keyboard.keyboard",
+      "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
+      "pluginId": "cordova-plugin-ionic-keyboard",
+      "clobbers": [
+        "window.Keyboard"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -548,6 +569,7 @@
     "cordova-plugin-splashscreen": "4.1.0",
     "cordova-plugin-swift-support": "3.1.1",
     "cordova-plugin-vibration": "2.1.1",
-    "com.develcode.plugins.volumeControl": "1.0"
+    "com.develcode.plugins.volumeControl": "1.0",
+    "cordova-plugin-ionic-keyboard": "2.2.0"
   }
 }
