@@ -1,0 +1,1 @@
+define(["sugar-web/activity/activity"],(function(i){requirejs(["domReady!"],(function(e){i.setup()}))}));

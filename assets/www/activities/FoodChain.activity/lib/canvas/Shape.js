@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-enyo.kind({name:"enyo.canvas.Shape",kind:enyo.canvas.Control,published:{color:"red",outlineColor:""},fill:function(a){a.fill()},outline:function(a){a.stroke()},draw:function(a){this.color&&(a.fillStyle=this.color,this.fill(a)),this.outlineColor&&(a.strokeStyle=this.outlineColor,this.outline(a))}});
+enyo.kind({name:"enyo.canvas.Shape",kind:enyo.canvas.Control,published:{color:"red",outlineColor:""},fill:function(o){o.fill()},outline:function(o){o.stroke()},draw:function(o){this.color&&(o.fillStyle=this.color,this.fill(o)),this.outlineColor&&(o.strokeStyle=this.outlineColor,this.outline(o))}});

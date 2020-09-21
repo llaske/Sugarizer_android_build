@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-enyo.kind({name:"enyo.canvas.Circle",kind:enyo.canvas.Shape,renderSelf:function(a){a.beginPath(),a.arc(this.bounds.l,this.bounds.t,this.bounds.w,0,2*Math.PI),this.draw(a)}});
+enyo.kind({name:"enyo.canvas.Circle",kind:enyo.canvas.Shape,renderSelf:function(n){n.beginPath(),n.arc(this.bounds.l,this.bounds.t,this.bounds.w,0,2*Math.PI),this.draw(n)}});

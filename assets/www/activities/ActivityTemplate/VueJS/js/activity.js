@@ -1,0 +1,1 @@
+requirejs.config({baseUrl:"lib",paths:{activity:"../js"}});var app=new Vue({el:"#app",data:{},methods:{}});

@@ -1,0 +1,1 @@
+keys={87:"up",104:"up",38:"up",83:"down",98:"down",40:"down",65:"left",100:"left",37:"left",68:"right",102:"right",39:"right",13:"select",32:"select",35:"select",97:"select",81:"select",36:"new",49:"easy_level",50:"medium_level",51:"hard_level",33:"undo_move",34:"redo_move"};

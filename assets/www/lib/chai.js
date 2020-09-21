@@ -1,2 +1,511 @@
-/*! Sugarizer 2020-03-14 */
-!function(){function require(a){var b=require.modules[a];if(!b)throw new Error('failed to require "'+a+'"');return"exports"in b||"function"!=typeof b.definition||(b.client=b.component=!0,b.definition.call(this,b.exports={},b),delete b.definition),b.exports}require.loader="component",require.helper={},require.helper.semVerSort=function(a,b){for(var c=a.version.split("."),d=b.version.split("."),e=0;e<c.length;++e){var f=parseInt(c[e],10),g=parseInt(d[e],10);if(f!==g)return f>g?1:-1;var h=c[e].substr((""+f).length),i=d[e].substr((""+g).length);if(""===h&&""!==i)return 1;if(""!==h&&""===i)return-1;if(""!==h&&""!==i)return h>i?1:-1}return 0},require.latest=function(a,b){function c(a){throw new Error('failed to find latest module of "'+a+'"')}var d=/(.*)~(.*)@v?(\d+\.\d+\.\d+[^\/]*)$/;/(.*)~(.*)/.test(a)||c(a);for(var e=Object.keys(require.modules),f=[],g=[],h=0;h<e.length;h++){var i=e[h];if(new RegExp(a+"@").test(i)){var j=i.substr(a.length+1);null!=d.exec(i)?f.push({version:j,name:i}):g.push({version:j,name:i})}}if(0===f.concat(g).length&&c(a),f.length>0){var k=f.sort(require.helper.semVerSort).pop().name;return!0===b?k:require(k)}var k=g.sort(function(a,b){return a.name>b.name})[0].name;return!0===b?k:require(k)},require.modules={},require.register=function(a,b){require.modules[a]={definition:b}},require.define=function(a,b){require.modules[a]={exports:b}},require.register("chaijs~assertion-error@1.0.0",function(a,b){function c(){function a(a,c){Object.keys(c).forEach(function(d){~b.indexOf(d)||(a[d]=c[d])})}var b=[].slice.call(arguments);return function(){for(var b=[].slice.call(arguments),c=0,d={};c<b.length;c++)a(d,b[c]);return d}}function d(a,b,d){var e=c("name","message","stack","constructor","toJSON"),f=e(b||{});this.message=a||"Unspecified AssertionError",this.showDiff=!1;for(var g in f)this[g]=f[g];(d=d||arguments.callee)&&Error.captureStackTrace&&Error.captureStackTrace(this,d)}b.exports=d,d.prototype=Object.create(Error.prototype),d.prototype.name="AssertionError",d.prototype.constructor=d,d.prototype.toJSON=function(a){var b=c("constructor","toJSON","stack"),d=b({name:this.name},this);return!1!==a&&this.stack&&(d.stack=this.stack),d}}),require.register("chaijs~type-detect@0.1.1",function(a,b){function c(a){var b=Object.prototype.toString.call(a);return e[b]?e[b]:null===a?"null":void 0===a?"undefined":a===Object(a)?"object":typeof a}function d(){this.tests={}}var a=b.exports=c,e={"[object Array]":"array","[object RegExp]":"regexp","[object Function]":"function","[object Arguments]":"arguments","[object Date]":"date"};a.Library=d,d.prototype.of=c,d.prototype.define=function(a,b){return 1===arguments.length?this.tests[a]:(this.tests[a]=b,this)},d.prototype.test=function(a,b){if(b===c(a))return!0;var d=this.tests[b];if(d&&"regexp"===c(d))return d.test(a);if(d&&"function"===c(d))return d(a);throw new ReferenceError('Type test "'+b+'" not defined or invalid.')}}),require.register("chaijs~deep-eql@0.1.3",function(a,b){function c(a,b,c){return!!d(a,b)||("date"===o(a)?f(a,b):"regexp"===o(a)?g(a,b):n.isBuffer(a)?k(a,b):"arguments"===o(a)?h(a,b,c):!!e(a,b)&&("object"!==o(a)&&"object"!==o(b)&&"array"!==o(a)&&"array"!==o(b)?d(a,b):m(a,b,c)))}function d(a,b){return a===b?0!==a||1/a==1/b:a!==a&&b!==b}function e(a,b){return o(a)===o(b)}function f(a,b){return"date"===o(b)&&d(a.getTime(),b.getTime())}function g(a,b){return"regexp"===o(b)&&d(a.toString(),b.toString())}function h(a,b,d){return"arguments"===o(b)&&(a=[].slice.call(a),b=[].slice.call(b),c(a,b,d))}function i(a){var b=[];for(var c in a)b.push(c);return b}function j(a,b){if(a.length!==b.length)return!1;for(var c=0,d=!0;c<a.length;c++)if(a[c]!==b[c]){d=!1;break}return d}function k(a,b){return!!n.isBuffer(b)&&j(a,b)}function l(a){return null!==a&&void 0!==a}function m(a,b,d){if(!l(a)||!l(b))return!1;if(a.prototype!==b.prototype)return!1;var e;if(d){for(e=0;e<d.length;e++)if(d[e][0]===a&&d[e][1]===b||d[e][0]===b&&d[e][1]===a)return!0}else d=[];try{var f=i(a),g=i(b)}catch(a){return!1}if(f.sort(),g.sort(),!j(f,g))return!1;d.push([a,b]);var h;for(e=f.length-1;e>=0;e--)if(h=f[e],!c(a[h],b[h],d))return!1;return!0}var n,o=require("chaijs~type-detect@0.1.1");try{n=require("buffer").Buffer}catch(a){n={},n.isBuffer=function(){return!1}}b.exports=c}),require.register("chai",function(a,b){b.exports=require("chai/lib/chai.js")}),require.register("chai/lib/chai.js",function(a,b){var c=[],a=b.exports={};a.version="2.1.0",a.AssertionError=require("chaijs~assertion-error@1.0.0");var d=require("chai/lib/chai/utils/index.js");a.use=function(a){return~c.indexOf(a)||(a(this,d),c.push(a)),this},a.util=d;var e=require("chai/lib/chai/config.js");a.config=e;var f=require("chai/lib/chai/assertion.js");a.use(f);var g=require("chai/lib/chai/core/assertions.js");a.use(g);var h=require("chai/lib/chai/interface/expect.js");a.use(h);var i=require("chai/lib/chai/interface/should.js");a.use(i);var j=require("chai/lib/chai/interface/assert.js");a.use(j)}),require.register("chai/lib/chai/assertion.js",function(a,b){var c=require("chai/lib/chai/config.js");b.exports=function(a,b){function d(a,b,c){f(this,"ssfi",c||arguments.callee),f(this,"object",a),f(this,"message",b)}var e=a.AssertionError,f=b.flag;a.Assertion=d,Object.defineProperty(d,"includeStack",{get:function(){return console.warn("Assertion.includeStack is deprecated, use chai.config.includeStack instead."),c.includeStack},set:function(a){console.warn("Assertion.includeStack is deprecated, use chai.config.includeStack instead."),c.includeStack=a}}),Object.defineProperty(d,"showDiff",{get:function(){return console.warn("Assertion.showDiff is deprecated, use chai.config.showDiff instead."),c.showDiff},set:function(a){console.warn("Assertion.showDiff is deprecated, use chai.config.showDiff instead."),c.showDiff=a}}),d.addProperty=function(a,c){b.addProperty(this.prototype,a,c)},d.addMethod=function(a,c){b.addMethod(this.prototype,a,c)},d.addChainableMethod=function(a,c,d){b.addChainableMethod(this.prototype,a,c,d)},d.overwriteProperty=function(a,c){b.overwriteProperty(this.prototype,a,c)},d.overwriteMethod=function(a,c){b.overwriteMethod(this.prototype,a,c)},d.overwriteChainableMethod=function(a,c,d){b.overwriteChainableMethod(this.prototype,a,c,d)},d.prototype.assert=function(a,d,g,h,i,j){var k=b.test(this,arguments);if(!0!==j&&(j=!1),!0!==c.showDiff&&(j=!1),!k){var d=b.getMessage(this,arguments),l=b.getActual(this,arguments);throw new e(d,{actual:l,expected:h,showDiff:j},c.includeStack?this.assert:f(this,"ssfi"))}},Object.defineProperty(d.prototype,"_obj",{get:function(){return f(this,"object")},set:function(a){f(this,"object",a)}})}}),require.register("chai/lib/chai/config.js",function(a,b){b.exports={includeStack:!1,showDiff:!0,truncateThreshold:40}}),require.register("chai/lib/chai/core/assertions.js",function(a,b){b.exports=function(a,b){function c(a,c){c&&x(this,"message",c),a=a.toLowerCase();var d=x(this,"object"),e=~["a","e","i","o","u"].indexOf(a.charAt(0))?"an ":"a ";this.assert(a===b.type(d),"expected #{this} to be "+e+a,"expected #{this} not to be "+e+a)}function d(){x(this,"contains",!0)}function e(a,c){c&&x(this,"message",c);var d=x(this,"object"),e=!1;if("array"===b.type(d)&&"object"===b.type(a)){for(var f in d)if(b.eql(d[f],a)){e=!0;break}}else if("object"===b.type(a)){if(!x(this,"negate")){for(var g in a)new w(d).property(g,a[g]);return}var h={};for(var g in a)h[g]=d[g];e=b.eql(h,a)}else e=d&&~d.indexOf(a);this.assert(e,"expected #{this} to include "+b.inspect(a),"expected #{this} to not include "+b.inspect(a))}function f(){var a=x(this,"object"),b=Object.prototype.toString.call(a);this.assert("[object Arguments]"===b,"expected #{this} to be arguments but got "+b,"expected #{this} to not be arguments")}function g(a,b){b&&x(this,"message",b);var c=x(this,"object");if(x(this,"deep"))return this.eql(a);this.assert(a===c,"expected #{this} to equal #{exp}","expected #{this} to not equal #{exp}",a,this._obj,!0)}function h(a,c){c&&x(this,"message",c),this.assert(b.eql(a,x(this,"object")),"expected #{this} to deeply equal #{exp}","expected #{this} to not deeply equal #{exp}",a,this._obj,!0)}function i(a,b){b&&x(this,"message",b);var c=x(this,"object");if(x(this,"doLength")){new w(c,b).to.have.property("length");var d=c.length;this.assert(d>a,"expected #{this} to have a length above #{exp} but got #{act}","expected #{this} to not have a length above #{exp}",a,d)}else this.assert(c>a,"expected #{this} to be above "+a,"expected #{this} to be at most "+a)}function j(a,b){b&&x(this,"message",b);var c=x(this,"object");if(x(this,"doLength")){new w(c,b).to.have.property("length");var d=c.length;this.assert(d>=a,"expected #{this} to have a length at least #{exp} but got #{act}","expected #{this} to have a length below #{exp}",a,d)}else this.assert(c>=a,"expected #{this} to be at least "+a,"expected #{this} to be below "+a)}function k(a,b){b&&x(this,"message",b);var c=x(this,"object");if(x(this,"doLength")){new w(c,b).to.have.property("length");var d=c.length;this.assert(d<a,"expected #{this} to have a length below #{exp} but got #{act}","expected #{this} to not have a length below #{exp}",a,d)}else this.assert(c<a,"expected #{this} to be below "+a,"expected #{this} to be at least "+a)}function l(a,b){b&&x(this,"message",b);var c=x(this,"object");if(x(this,"doLength")){new w(c,b).to.have.property("length");var d=c.length;this.assert(d<=a,"expected #{this} to have a length at most #{exp} but got #{act}","expected #{this} to have a length above #{exp}",a,d)}else this.assert(c<=a,"expected #{this} to be at most "+a,"expected #{this} to be above "+a)}function m(a,c){c&&x(this,"message",c);var d=b.getName(a);this.assert(x(this,"object")instanceof a,"expected #{this} to be an instance of "+d,"expected #{this} to not be an instance of "+d)}function n(a,c){c&&x(this,"message",c);var d=x(this,"object");this.assert(d.hasOwnProperty(a),"expected #{this} to have own property "+b.inspect(a),"expected #{this} to not have own property "+b.inspect(a))}function o(){x(this,"doLength",!0)}function p(a,b){b&&x(this,"message",b);var c=x(this,"object");new w(c,b).to.have.property("length");var d=c.length;this.assert(d==a,"expected #{this} to have a length of #{exp} but got #{act}","expected #{this} to not have a length of #{act}",a,d)}function q(a){var c,d=x(this,"object"),e=!0,f="keys must be given single argument of Array|Object|String, or multiple String arguments";switch(b.type(a)){case"array":if(arguments.length>1)throw new Error(f);break;case"object":if(arguments.length>1)throw new Error(f);a=Object.keys(a);break;default:a=Array.prototype.slice.call(arguments)}if(!a.length)throw new Error("keys required");var g=Object.keys(d),h=a,i=a.length,j=x(this,"any"),k=x(this,"all");if(j||k||(k=!0),j){e=h.filter(function(a){return~g.indexOf(a)}).length>0}if(k&&(e=a.every(function(a){return~g.indexOf(a)}),x(this,"negate")||x(this,"contains")||(e=e&&a.length==g.length)),i>1){a=a.map(function(a){return b.inspect(a)});var l=a.pop();k&&(c=a.join(", ")+", and "+l),j&&(c=a.join(", ")+", or "+l)}else c=b.inspect(a[0]);c=(i>1?"keys ":"key ")+c,c=(x(this,"contains")?"contain ":"have ")+c,this.assert(e,"expected #{this} to "+c,"expected #{this} to not "+c,h.slice(0).sort(),g.sort(),!0)}function r(a,c,d){d&&x(this,"message",d);var e=x(this,"object");new w(e,d).is.a("function");var f=!1,g=null,h=null,i=null;0===arguments.length?(c=null,a=null):a&&(a instanceof RegExp||"string"==typeof a)?(c=a,a=null):a&&a instanceof Error?(g=a,a=null,c=null):"function"==typeof a?"Error"===(h=a.prototype.name||a.name)&&a!==Error&&(h=(new a).name):a=null;try{e()}catch(d){if(g)return this.assert(d===g,"expected #{this} to throw #{exp} but #{act} was thrown","expected #{this} to not throw #{exp}",g instanceof Error?g.toString():g,d instanceof Error?d.toString():d),x(this,"object",d),this;if(a&&(this.assert(d instanceof a,"expected #{this} to throw #{exp} but #{act} was thrown","expected #{this} to not throw #{exp} but #{act} was thrown",h,d instanceof Error?d.toString():d),!c))return x(this,"object",d),this;var j="object"===b.type(d)&&"message"in d?d.message:""+d;if(null!=j&&c&&c instanceof RegExp)return this.assert(c.exec(j),"expected #{this} to throw error matching #{exp} but got #{act}","expected #{this} to throw error not matching #{exp}",c,j),x(this,"object",d),this;if(null!=j&&c&&"string"==typeof c)return this.assert(~j.indexOf(c),"expected #{this} to throw error including #{exp} but got #{act}","expected #{this} to throw error not including #{act}",c,j),x(this,"object",d),this;f=!0,i=d}var k="",l=null!==h?h:g?"#{exp}":"an error";f&&(k=" but #{act} was thrown"),this.assert(!0===f,"expected #{this} to throw "+l+k,"expected #{this} to not throw "+l+k,g instanceof Error?g.toString():g,i instanceof Error?i.toString():i),x(this,"object",i)}function s(a,b,c){return a.every(function(a){return c?b.some(function(b){return c(a,b)}):-1!==b.indexOf(a)})}function t(a,b,c){c&&x(this,"message",c);var d=x(this,"object");new w(a,c).to.have.property(b),new w(d).is.a("function");var e=a[b];d(),this.assert(e!==a[b],"expected ."+b+" to change","expected ."+b+" to not change")}function u(a,b,c){c&&x(this,"message",c);var d=x(this,"object");new w(a,c).to.have.property(b),new w(d).is.a("function");var e=a[b];d(),this.assert(a[b]-e>0,"expected ."+b+" to increase","expected ."+b+" to not increase")}function v(a,b,c){c&&x(this,"message",c);var d=x(this,"object");new w(a,c).to.have.property(b),new w(d).is.a("function");var e=a[b];d(),this.assert(a[b]-e<0,"expected ."+b+" to decrease","expected ."+b+" to not decrease")}var w=a.Assertion,x=(Object.prototype.toString,b.flag);["to","be","been","is","and","has","have","with","that","which","at","of","same"].forEach(function(a){w.addProperty(a,function(){return this})}),w.addProperty("not",function(){x(this,"negate",!0)}),w.addProperty("deep",function(){x(this,"deep",!0)}),w.addProperty("any",function(){x(this,"any",!0),x(this,"all",!1)}),w.addProperty("all",function(){x(this,"all",!0),x(this,"any",!1)}),w.addChainableMethod("an",c),w.addChainableMethod("a",c),w.addChainableMethod("include",e,d),w.addChainableMethod("contain",e,d),w.addChainableMethod("contains",e,d),w.addChainableMethod("includes",e,d),w.addProperty("ok",function(){this.assert(x(this,"object"),"expected #{this} to be truthy","expected #{this} to be falsy")}),w.addProperty("true",function(){this.assert(!0===x(this,"object"),"expected #{this} to be true","expected #{this} to be false",!this.negate)}),w.addProperty("false",function(){this.assert(!1===x(this,"object"),"expected #{this} to be false","expected #{this} to be true",!!this.negate)}),w.addProperty("null",function(){this.assert(null===x(this,"object"),"expected #{this} to be null","expected #{this} not to be null")}),w.addProperty("undefined",function(){this.assert(void 0===x(this,"object"),"expected #{this} to be undefined","expected #{this} not to be undefined")}),w.addProperty("exist",function(){this.assert(null!=x(this,"object"),"expected #{this} to exist","expected #{this} to not exist")}),w.addProperty("empty",function(){var a=x(this,"object"),b=a;Array.isArray(a)||"string"==typeof object?b=a.length:"object"==typeof a&&(b=Object.keys(a).length),this.assert(!b,"expected #{this} to be empty","expected #{this} not to be empty")}),w.addProperty("arguments",f),w.addProperty("Arguments",f),w.addMethod("equal",g),w.addMethod("equals",g),w.addMethod("eq",g),w.addMethod("eql",h),w.addMethod("eqls",h),w.addMethod("above",i),w.addMethod("gt",i),w.addMethod("greaterThan",i),w.addMethod("least",j),w.addMethod("gte",j),w.addMethod("below",k),w.addMethod("lt",k),w.addMethod("lessThan",k),w.addMethod("most",l),w.addMethod("lte",l),w.addMethod("within",function(a,b,c){c&&x(this,"message",c);var d=x(this,"object"),e=a+".."+b;if(x(this,"doLength")){new w(d,c).to.have.property("length");var f=d.length;this.assert(f>=a&&f<=b,"expected #{this} to have a length within "+e,"expected #{this} to not have a length within "+e)}else this.assert(d>=a&&d<=b,"expected #{this} to be within "+e,"expected #{this} to not be within "+e)}),w.addMethod("instanceof",m),w.addMethod("instanceOf",m),w.addMethod("property",function(a,c,d){d&&x(this,"message",d);var e=!!x(this,"deep"),f=e?"deep property ":"property ",g=x(this,"negate"),h=x(this,"object"),i=e?b.getPathInfo(a,h):null,j=e?i.exists:b.hasProperty(a,h),k=e?i.value:h[a];if(g&&void 0!==c){if(void 0===k)throw d=null!=d?d+": ":"",new Error(d+b.inspect(h)+" has no "+f+b.inspect(a))}else this.assert(j,"expected #{this} to have a "+f+b.inspect(a),"expected #{this} to not have "+f+b.inspect(a));void 0!==c&&this.assert(c===k,"expected #{this} to have a "+f+b.inspect(a)+" of #{exp}, but got #{act}","expected #{this} to not have a "+f+b.inspect(a)+" of #{act}",c,k),x(this,"object",k)}),w.addMethod("ownProperty",n),w.addMethod("haveOwnProperty",n),w.addChainableMethod("length",p,o),w.addMethod("lengthOf",p),w.addMethod("match",function(a,b){b&&x(this,"message",b);var c=x(this,"object");this.assert(a.exec(c),"expected #{this} to match "+a,"expected #{this} not to match "+a)}),w.addMethod("string",function(a,c){c&&x(this,"message",c);var d=x(this,"object");new w(d,c).is.a("string"),this.assert(~d.indexOf(a),"expected #{this} to contain "+b.inspect(a),"expected #{this} to not contain "+b.inspect(a))}),w.addMethod("keys",q),w.addMethod("key",q),w.addMethod("throw",r),w.addMethod("throws",r),w.addMethod("Throw",r),w.addMethod("respondTo",function(a,c){c&&x(this,"message",c);var d=x(this,"object"),e=x(this,"itself"),f="function"!==b.type(d)||e?d[a]:d.prototype[a];this.assert("function"==typeof f,"expected #{this} to respond to "+b.inspect(a),"expected #{this} to not respond to "+b.inspect(a))}),w.addProperty("itself",function(){x(this,"itself",!0)}),w.addMethod("satisfy",function(a,c){c&&x(this,"message",c);var d=x(this,"object"),e=a(d);this.assert(e,"expected #{this} to satisfy "+b.objDisplay(a),"expected #{this} to not satisfy"+b.objDisplay(a),!this.negate,e)}),w.addMethod("closeTo",function(a,c,d){d&&x(this,"message",d);var e=x(this,"object");if(new w(e,d).is.a("number"),"number"!==b.type(a)||"number"!==b.type(c))throw new Error("the arguments to closeTo must be numbers");this.assert(Math.abs(e-a)<=c,"expected #{this} to be close to "+a+" +/- "+c,"expected #{this} not to be close to "+a+" +/- "+c)}),w.addMethod("members",function(a,c){c&&x(this,"message",c);var d=x(this,"object");new w(d).to.be.an("array"),new w(a).to.be.an("array");var e=x(this,"deep")?b.eql:void 0;if(x(this,"contains"))return this.assert(s(a,d,e),"expected #{this} to be a superset of #{act}","expected #{this} to not be a superset of #{act}",d,a);this.assert(s(d,a,e)&&s(a,d,e),"expected #{this} to have the same members as #{act}","expected #{this} to not have the same members as #{act}",d,a)}),w.addChainableMethod("change",t),w.addChainableMethod("changes",t),w.addChainableMethod("increase",u),w.addChainableMethod("increases",u),w.addChainableMethod("decrease",v),w.addChainableMethod("decreases",v)}}),require.register("chai/lib/chai/interface/assert.js",function(exports,module){module.exports=function(chai,util){var Assertion=chai.Assertion,flag=util.flag,assert=chai.assert=function(a,b){new Assertion(null,null,chai.assert).assert(a,b,"[ negation message unavailable ]")};assert.fail=function(a,b,c,d){throw c=c||"assert.fail()",new chai.AssertionError(c,{actual:a,expected:b,operator:d},assert.fail)},assert.ok=function(a,b){new Assertion(a,b).is.ok},assert.notOk=function(a,b){new Assertion(a,b).is.not.ok},assert.equal=function(a,b,c){var d=new Assertion(a,c,assert.equal);d.assert(b==flag(d,"object"),"expected #{this} to equal #{exp}","expected #{this} to not equal #{act}",b,a)},assert.notEqual=function(a,b,c){var d=new Assertion(a,c,assert.notEqual);d.assert(b!=flag(d,"object"),"expected #{this} to not equal #{exp}","expected #{this} to equal #{act}",b,a)},assert.strictEqual=function(a,b,c){new Assertion(a,c).to.equal(b)},assert.notStrictEqual=function(a,b,c){new Assertion(a,c).to.not.equal(b)},assert.deepEqual=function(a,b,c){new Assertion(a,c).to.eql(b)},assert.notDeepEqual=function(a,b,c){new Assertion(a,c).to.not.eql(b)},assert.isAbove=function(a,b,c){new Assertion(a,c).to.be.above(b)},assert.isBelow=function(a,b,c){new Assertion(a,c).to.be.below(b)},assert.isTrue=function(a,b){new Assertion(a,b).is.true},assert.isFalse=function(a,b){new Assertion(a,b).is.false},assert.isNull=function(a,b){new Assertion(a,b).to.equal(null)},assert.isNotNull=function(a,b){new Assertion(a,b).to.not.equal(null)},assert.isUndefined=function(a,b){new Assertion(a,b).to.equal(void 0)},assert.isDefined=function(a,b){new Assertion(a,b).to.not.equal(void 0)},assert.isFunction=function(a,b){new Assertion(a,b).to.be.a("function")},assert.isNotFunction=function(a,b){new Assertion(a,b).to.not.be.a("function")},assert.isObject=function(a,b){new Assertion(a,b).to.be.a("object")},assert.isNotObject=function(a,b){new Assertion(a,b).to.not.be.a("object")},assert.isArray=function(a,b){new Assertion(a,b).to.be.an("array")},assert.isNotArray=function(a,b){new Assertion(a,b).to.not.be.an("array")},assert.isString=function(a,b){new Assertion(a,b).to.be.a("string")},assert.isNotString=function(a,b){new Assertion(a,b).to.not.be.a("string")},assert.isNumber=function(a,b){new Assertion(a,b).to.be.a("number")},assert.isNotNumber=function(a,b){new Assertion(a,b).to.not.be.a("number")},assert.isBoolean=function(a,b){new Assertion(a,b).to.be.a("boolean")},assert.isNotBoolean=function(a,b){new Assertion(a,b).to.not.be.a("boolean")},assert.typeOf=function(a,b,c){new Assertion(a,c).to.be.a(b)},assert.notTypeOf=function(a,b,c){new Assertion(a,c).to.not.be.a(b)},assert.instanceOf=function(a,b,c){new Assertion(a,c).to.be.instanceOf(b)},assert.notInstanceOf=function(a,b,c){new Assertion(a,c).to.not.be.instanceOf(b)},assert.include=function(a,b,c){new Assertion(a,c,assert.include).include(b)},assert.notInclude=function(a,b,c){new Assertion(a,c,assert.notInclude).not.include(b)},assert.match=function(a,b,c){new Assertion(a,c).to.match(b)},assert.notMatch=function(a,b,c){new Assertion(a,c).to.not.match(b)},assert.property=function(a,b,c){new Assertion(a,c).to.have.property(b)},assert.notProperty=function(a,b,c){new Assertion(a,c).to.not.have.property(b)},assert.deepProperty=function(a,b,c){new Assertion(a,c).to.have.deep.property(b)},assert.notDeepProperty=function(a,b,c){new Assertion(a,c).to.not.have.deep.property(b)},assert.propertyVal=function(a,b,c,d){new Assertion(a,d).to.have.property(b,c)},assert.propertyNotVal=function(a,b,c,d){new Assertion(a,d).to.not.have.property(b,c)},assert.deepPropertyVal=function(a,b,c,d){new Assertion(a,d).to.have.deep.property(b,c)},assert.deepPropertyNotVal=function(a,b,c,d){new Assertion(a,d).to.not.have.deep.property(b,c)},assert.lengthOf=function(a,b,c){new Assertion(a,c).to.have.length(b)},assert.Throw=function(a,b,c,d){("string"==typeof b||b instanceof RegExp)&&(c=b,b=null);var e=new Assertion(a,d).to.Throw(b,c);return flag(e,"object")},assert.doesNotThrow=function(a,b,c){"string"==typeof b&&(c=b,b=null),new Assertion(a,c).to.not.Throw(b)},assert.operator=function(val,operator,val2,msg){if(!~["==","===",">",">=","<","<=","!=","!=="].indexOf(operator))throw new Error('Invalid operator "'+operator+'"');var test=new Assertion(eval(val+operator+val2),msg);test.assert(!0===flag(test,"object"),"expected "+util.inspect(val)+" to be "+operator+" "+util.inspect(val2),"expected "+util.inspect(val)+" to not be "+operator+" "+util.inspect(val2))},assert.closeTo=function(a,b,c,d){new Assertion(a,d).to.be.closeTo(b,c)},assert.sameMembers=function(a,b,c){new Assertion(a,c).to.have.same.members(b)},assert.sameDeepMembers=function(a,b,c){new Assertion(a,c).to.have.same.deep.members(b)},assert.includeMembers=function(a,b,c){new Assertion(a,c).to.include.members(b)},assert.changes=function(a,b,c){new Assertion(a).to.change(b,c)},assert.doesNotChange=function(a,b,c){new Assertion(a).to.not.change(b,c)},assert.increases=function(a,b,c){new Assertion(a).to.increase(b,c)},assert.doesNotIncrease=function(a,b,c){new Assertion(a).to.not.increase(b,c)},assert.decreases=function(a,b,c){new Assertion(a).to.decrease(b,c)},assert.doesNotDecrease=function(a,b,c){new Assertion(a).to.not.decrease(b,c)},assert.ifError=function(a,b){new Assertion(a,b).to.not.be.ok},function a(b,c){return assert[c]=assert[b],a}("Throw","throw")("Throw","throws")}}),require.register("chai/lib/chai/interface/expect.js",function(a,b){b.exports=function(a,b){a.expect=function(b,c){return new a.Assertion(b,c)},a.expect.fail=function(b,c,d,e){throw d=d||"expect.fail()",new a.AssertionError(d,{actual:b,expected:c,operator:e},a.expect.fail)}}}),require.register("chai/lib/chai/interface/should.js",function(a,b){b.exports=function(a,b){function c(){function b(){return this instanceof String||this instanceof Number?new d(this.constructor(this),null,b):this instanceof Boolean?new d(1==this,null,b):new d(this,null,b)}function c(a){Object.defineProperty(this,"should",{value:a,enumerable:!0,configurable:!0,writable:!0})}Object.defineProperty(Object.prototype,"should",{set:c,get:b,configurable:!0});var e={};return e.fail=function(b,c,d,f){throw d=d||"should.fail()",new a.AssertionError(d,{actual:b,expected:c,operator:f},e.fail)},e.equal=function(a,b,c){new d(a,c).to.equal(b)},e.Throw=function(a,b,c,e){new d(a,e).to.Throw(b,c)},e.exist=function(a,b){new d(a,b).to.exist},e.not={},e.not.equal=function(a,b,c){new d(a,c).to.not.equal(b)},e.not.Throw=function(a,b,c,e){new d(a,e).to.not.Throw(b,c)},e.not.exist=function(a,b){new d(a,b).to.not.exist},e.throw=e.Throw,e.not.throw=e.not.Throw,e}var d=a.Assertion;a.should=c,a.Should=c}}),require.register("chai/lib/chai/utils/addChainableMethod.js",function(a,b){var c=require("chai/lib/chai/utils/transferFlags.js"),d=require("chai/lib/chai/utils/flag.js"),e=require("chai/lib/chai/config.js"),f="__proto__"in Object,g=/^(?:length|name|arguments|caller)$/,h=Function.prototype.call,i=Function.prototype.apply;b.exports=function(a,b,j,k){"function"!=typeof k&&(k=function(){});var l={method:j,chainingBehavior:k};a.__methods||(a.__methods={}),a.__methods[b]=l,Object.defineProperty(a,b,{get:function(){l.chainingBehavior.call(this);var b=function a(){d(this,"ssfi")&&!1===e.includeStack&&d(this,"ssfi",a);var b=l.method.apply(this,arguments);return void 0===b?this:b};if(f){var j=b.__proto__=Object.create(this);j.call=h,j.apply=i}else{Object.getOwnPropertyNames(a).forEach(function(c){if(!g.test(c)){var d=Object.getOwnPropertyDescriptor(a,c);Object.defineProperty(b,c,d)}})}return c(this,b),b},configurable:!0})}}),require.register("chai/lib/chai/utils/addMethod.js",function(a,b){var c=require("chai/lib/chai/config.js"),d=require("chai/lib/chai/utils/flag.js");b.exports=function(a,b,e){a[b]=function(){d(this,"ssfi")&&!1===c.includeStack&&d(this,"ssfi",a[b]);var f=e.apply(this,arguments);return void 0===f?this:f}}}),require.register("chai/lib/chai/utils/addProperty.js",function(a,b){b.exports=function(a,b,c){Object.defineProperty(a,b,{get:function(){var a=c.call(this);return void 0===a?this:a},configurable:!0})}}),require.register("chai/lib/chai/utils/flag.js",function(a,b){b.exports=function(a,b,c){var d=a.__flags||(a.__flags=Object.create(null));if(3!==arguments.length)return d[b];d[b]=c}}),require.register("chai/lib/chai/utils/getActual.js",function(a,b){b.exports=function(a,b){return b.length>4?b[4]:a._obj}}),require.register("chai/lib/chai/utils/getEnumerableProperties.js",function(a,b){b.exports=function(a){var b=[];for(var c in a)b.push(c);return b}}),require.register("chai/lib/chai/utils/getMessage.js",function(a,b){var c=require("chai/lib/chai/utils/flag.js"),d=require("chai/lib/chai/utils/getActual.js"),e=(require("chai/lib/chai/utils/inspect.js"),require("chai/lib/chai/utils/objDisplay.js"));b.exports=function(a,b){var f=c(a,"negate"),g=c(a,"object"),h=b[3],i=d(a,b),j=f?b[2]:b[1],k=c(a,"message");return"function"==typeof j&&(j=j()),j=j||"",j=j.replace(/#{this}/g,e(g)).replace(/#{act}/g,e(i)).replace(/#{exp}/g,e(h)),k?k+": "+j:j}}),require.register("chai/lib/chai/utils/getName.js",function(a,b){b.exports=function(a){if(a.name)return a.name;var b=/^\s?function ([^(]*)\(/.exec(a);return b&&b[1]?b[1]:""}}),require.register("chai/lib/chai/utils/getPathValue.js",function(a,b){var c=require("chai/lib/chai/utils/getPathInfo.js");b.exports=function(a,b){return c(a,b).value}}),require.register("chai/lib/chai/utils/getPathInfo.js",function(a,b){function c(a){return a.replace(/\[/g,".[").match(/(\\\.|[^.]+?)+/g).map(function(a){var b=/\[(\d+)\]$/,c=b.exec(a);return c?{i:parseFloat(c[1])}:{p:a}})}function d(a,b,c){var d,e=b;c=void 0===c?a.length:c;for(var f=0,g=c;f<g;f++){var h=a[f];e?(void 0!==h.p?e=e[h.p]:void 0!==h.i&&(e=e[h.i]),f==g-1&&(d=e)):d=void 0}return d}var e=require("chai/lib/chai/utils/hasProperty.js");b.exports=function(a,b){var f=c(a),g=f[f.length-1],h={parent:d(f,b,f.length-1),name:g.p||g.i,value:d(f,b)};return h.exists=e(h.name,h.parent),h}}),require.register("chai/lib/chai/utils/hasProperty.js",function(a,b){var c=require("chai/lib/chai/utils/type.js"),d={number:Number,string:String};b.exports=function(a,b){var e=c(b);return"null"!==e&&"undefined"!==e&&(d[e]&&"object"!=typeof b&&(b=new d[e](b)),a in b)}}),require.register("chai/lib/chai/utils/getProperties.js",function(a,b){b.exports=function(a){function b(a){-1===c.indexOf(a)&&c.push(a)}for(var c=Object.getOwnPropertyNames(subject),d=Object.getPrototypeOf(subject);null!==d;)Object.getOwnPropertyNames(d).forEach(b),d=Object.getPrototypeOf(d);return c}}),require.register("chai/lib/chai/utils/index.js",function(a,b){var a=b.exports={};a.test=require("chai/lib/chai/utils/test.js"),a.type=require("chai/lib/chai/utils/type.js"),a.getMessage=require("chai/lib/chai/utils/getMessage.js"),a.getActual=require("chai/lib/chai/utils/getActual.js"),a.inspect=require("chai/lib/chai/utils/inspect.js"),a.objDisplay=require("chai/lib/chai/utils/objDisplay.js"),a.flag=require("chai/lib/chai/utils/flag.js"),a.transferFlags=require("chai/lib/chai/utils/transferFlags.js"),a.eql=require("chaijs~deep-eql@0.1.3"),a.getPathValue=require("chai/lib/chai/utils/getPathValue.js"),a.getPathInfo=require("chai/lib/chai/utils/getPathInfo.js"),a.hasProperty=require("chai/lib/chai/utils/hasProperty.js"),a.getName=require("chai/lib/chai/utils/getName.js"),a.addProperty=require("chai/lib/chai/utils/addProperty.js"),a.addMethod=require("chai/lib/chai/utils/addMethod.js"),a.overwriteProperty=require("chai/lib/chai/utils/overwriteProperty.js"),a.overwriteMethod=require("chai/lib/chai/utils/overwriteMethod.js"),a.addChainableMethod=require("chai/lib/chai/utils/addChainableMethod.js"),a.overwriteChainableMethod=require("chai/lib/chai/utils/overwriteChainableMethod.js")}),require.register("chai/lib/chai/utils/inspect.js",function(a,b){function c(a,b,c,e){return d({showHidden:b,seen:[],stylize:function(a){return a}},a,void 0===c?2:c)}function d(b,c,n){if(c&&"function"==typeof c.inspect&&c.inspect!==a.inspect&&(!c.constructor||c.constructor.prototype!==c)){var s=c.inspect(n);return"string"!=typeof s&&(s=d(b,s,n)),s}var t=e(b,c);if(t)return t;if(r(c)){if("outerHTML"in c)return c.outerHTML;try{if(document.xmlVersion){return(new XMLSerializer).serializeToString(c)}var u="http://www.w3.org/1999/xhtml",v=document.createElementNS(u,"_");return v.appendChild(c.cloneNode(!1)),html=v.innerHTML.replace("><",">"+c.innerHTML+"<"),v.innerHTML="",html}catch(a){}}var w=q(c),x=b.showHidden?p(c):w;if(0===x.length||m(c)&&(1===x.length&&"stack"===x[0]||2===x.length&&"description"===x[0]&&"stack"===x[1])){if("function"==typeof c){var y=o(c),z=y?": "+y:"";return b.stylize("[Function"+z+"]","special")}if(k(c))return b.stylize(RegExp.prototype.toString.call(c),"regexp");if(l(c))return b.stylize(Date.prototype.toUTCString.call(c),"date");if(m(c))return f(c)}var A="",B=!1,C=["{","}"];if(j(c)&&(B=!0,C=["[","]"]),"function"==typeof c){var y=o(c),z=y?": "+y:"";A=" [Function"+z+"]"}if(k(c)&&(A=" "+RegExp.prototype.toString.call(c)),l(c)&&(A=" "+Date.prototype.toUTCString.call(c)),m(c))return f(c);if(0===x.length&&(!B||0==c.length))return C[0]+A+C[1];if(n<0)return k(c)?b.stylize(RegExp.prototype.toString.call(c),"regexp"):b.stylize("[Object]","special");b.seen.push(c);var D;return D=B?g(b,c,n,w,x):x.map(function(a){return h(b,c,n,w,a,B)}),b.seen.pop(),i(D,A,C)}function e(a,b){switch(typeof b){case"undefined":return a.stylize("undefined","undefined");case"string":var c="'"+JSON.stringify(b).replace(/^"|"$/g,"").replace(/'/g,"\\'").replace(/\\"/g,'"')+"'";return a.stylize(c,"string");case"number":return 0===b&&1/b==-1/0?a.stylize("-0","number"):a.stylize(""+b,"number");case"boolean":return a.stylize(""+b,"boolean")}if(null===b)return a.stylize("null","null")}function f(a){return"["+Error.prototype.toString.call(a)+"]"}function g(a,b,c,d,e){for(var f=[],g=0,i=b.length;g<i;++g)Object.prototype.hasOwnProperty.call(b,String(g))?f.push(h(a,b,c,d,String(g),!0)):f.push("");return e.forEach(function(e){e.match(/^\d+$/)||f.push(h(a,b,c,d,e,!0))}),f}function h(a,b,c,e,f,g){var h,i;if(b.__lookupGetter__&&(b.__lookupGetter__(f)?i=b.__lookupSetter__(f)?a.stylize("[Getter/Setter]","special"):a.stylize("[Getter]","special"):b.__lookupSetter__(f)&&(i=a.stylize("[Setter]","special"))),e.indexOf(f)<0&&(h="["+f+"]"),i||(a.seen.indexOf(b[f])<0?(i=null===c?d(a,b[f],null):d(a,b[f],c-1),i.indexOf("\n")>-1&&(i=g?i.split("\n").map(function(a){return"  "+a}).join("\n").substr(2):"\n"+i.split("\n").map(function(a){return"   "+a}).join("\n"))):i=a.stylize("[Circular]","special")),void 0===h){if(g&&f.match(/^\d+$/))return i;h=JSON.stringify(""+f),h.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)?(h=h.substr(1,h.length-2),h=a.stylize(h,"name")):(h=h.replace(/'/g,"\\'").replace(/\\"/g,'"').replace(/(^"|"$)/g,"'"),h=a.stylize(h,"string"))}return h+": "+i}function i(a,b,c){var d=0;return a.reduce(function(a,b){return d++,b.indexOf("\n")>=0&&d++,a+b.length+1},0)>60?c[0]+(""===b?"":b+"\n ")+" "+a.join(",\n  ")+" "+c[1]:c[0]+b+" "+a.join(", ")+" "+c[1]}function j(a){return Array.isArray(a)||"object"==typeof a&&"[object Array]"===n(a)}function k(a){return"object"==typeof a&&"[object RegExp]"===n(a)}function l(a){return"object"==typeof a&&"[object Date]"===n(a)}function m(a){return"object"==typeof a&&"[object Error]"===n(a)}function n(a){return Object.prototype.toString.call(a)}var o=require("chai/lib/chai/utils/getName.js"),p=require("chai/lib/chai/utils/getProperties.js"),q=require("chai/lib/chai/utils/getEnumerableProperties.js");b.exports=c;var r=function(a){return"object"==typeof HTMLElement?a instanceof HTMLElement:a&&"object"==typeof a&&1===a.nodeType&&"string"==typeof a.nodeName}}),require.register("chai/lib/chai/utils/objDisplay.js",function(a,b){var c=require("chai/lib/chai/utils/inspect.js"),d=require("chai/lib/chai/config.js");b.exports=function(a){var b=c(a),e=Object.prototype.toString.call(a);if(d.truncateThreshold&&b.length>=d.truncateThreshold){if("[object Function]"===e)return a.name&&""!==a.name?"[Function: "+a.name+"]":"[Function]";if("[object Array]"===e)return"[ Array("+a.length+") ]";if("[object Object]"===e){var f=Object.keys(a);return"{ Object ("+(f.length>2?f.splice(0,2).join(", ")+", ...":f.join(", "))+") }"}return b}return b}}),require.register("chai/lib/chai/utils/overwriteMethod.js",function(a,b){b.exports=function(a,b,c){var d=a[b],e=function(){return this};d&&"function"==typeof d&&(e=d),a[b]=function(){var a=c(e).apply(this,arguments);return void 0===a?this:a}}}),require.register("chai/lib/chai/utils/overwriteProperty.js",function(a,b){b.exports=function(a,b,c){var d=Object.getOwnPropertyDescriptor(a,b),e=function(){};d&&"function"==typeof d.get&&(e=d.get),Object.defineProperty(a,b,{get:function(){var a=c(e).call(this);return void 0===a?this:a},configurable:!0})}}),require.register("chai/lib/chai/utils/overwriteChainableMethod.js",function(a,b){b.exports=function(a,b,c,d){var e=a.__methods[b],f=e.chainingBehavior;e.chainingBehavior=function(){var a=d(f).call(this);return void 0===a?this:a};var g=e.method;e.method=function(){var a=c(g).apply(this,arguments);return void 0===a?this:a}}}),require.register("chai/lib/chai/utils/test.js",function(a,b){var c=require("chai/lib/chai/utils/flag.js");b.exports=function(a,b){var d=c(a,"negate"),e=b[0];return d?!e:e}}),require.register("chai/lib/chai/utils/transferFlags.js",function(a,b){b.exports=function(a,b,c){var d=a.__flags||(a.__flags=Object.create(null));b.__flags||(b.__flags=Object.create(null)),c=3!==arguments.length||c;for(var e in d)(c||"object"!==e&&"ssfi"!==e&&"message"!=e)&&(b.__flags[e]=d[e])}}),require.register("chai/lib/chai/utils/type.js",function(a,b){var c={"[object Arguments]":"arguments","[object Array]":"array","[object Date]":"date","[object Function]":"function","[object Number]":"number","[object RegExp]":"regexp","[object String]":"string"};b.exports=function(a){var b=Object.prototype.toString.call(a);return c[b]?c[b]:null===a?"null":void 0===a?"undefined":a===Object(a)?"object":typeof a}}),"object"==typeof exports?module.exports=require("chai"):"function"==typeof define&&define.amd?define("chai",[],function(){return require("chai")}):(this||window).chai=require("chai")}();
+!function(){function require(e){var t=require.modules[e];if(!t)throw new Error('failed to require "'+e+'"');return"exports"in t||"function"!=typeof t.definition||(t.client=t.component=!0,t.definition.call(this,t.exports={},t),delete t.definition),t.exports}require.loader="component",require.helper={},require.helper.semVerSort=function(e,t){for(var r=e.version.split("."),i=t.version.split("."),n=0;n<r.length;++n){var s=parseInt(r[n],10),o=parseInt(i[n],10);if(s!==o)return s>o?1:-1;var a=r[n].substr((""+s).length),c=i[n].substr((""+o).length);if(""===a&&""!==c)return 1;if(""!==a&&""===c)return-1;if(""!==a&&""!==c)return a>c?1:-1}return 0},require.latest=function(e,t){function showError(e){throw new Error('failed to find latest module of "'+e+'"')}var r=/(.*)~(.*)@v?(\d+\.\d+\.\d+[^\/]*)$/;/(.*)~(.*)/.test(e)||showError(e);for(var i=Object.keys(require.modules),n=[],s=[],o=0;o<i.length;o++){var a=i[o];if(new RegExp(e+"@").test(a)){var c=a.substr(e.length+1);null!=r.exec(a)?n.push({version:c,name:a}):s.push({version:c,name:a})}}if(0===n.concat(s).length&&showError(e),n.length>0){var u=n.sort(require.helper.semVerSort).pop().name;return!0===t?u:require(u)}u=s.sort((function(e,t){return e.name>t.name}))[0].name;return!0===t?u:require(u)},require.modules={},require.register=function(e,t){require.modules[e]={definition:t}},require.define=function(e,t){require.modules[e]={exports:t}},require.register("chaijs~assertion-error@1.0.0",(function(e,t){
+/*!
+ * assertion-error
+ * Copyright(c) 2013 Jake Luer <jake@qualiancy.com>
+ * MIT Licensed
+ */
+/*!
+ * Return a function that will copy properties from
+ * one object to another excluding any originally
+ * listed. Returned function will create a new `{}`.
+ *
+ * @param {String} excluded properties ...
+ * @return {Function}
+ */
+function exclude(){var e=[].slice.call(arguments);function excludeProps(t,r){Object.keys(r).forEach((function(i){~e.indexOf(i)||(t[i]=r[i])}))}return function extendExclude(){for(var e=[].slice.call(arguments),t=0,r={};t<e.length;t++)excludeProps(r,e[t]);return r}}function AssertionError(e,t,r){var i=exclude("name","message","stack","constructor","toJSON"),n=i(t||{});for(var s in this.message=e||"Unspecified AssertionError",this.showDiff=!1,n)this[s]=n[s];(r=r||arguments.callee)&&Error.captureStackTrace&&Error.captureStackTrace(this,r)}
+/*!
+ * Inherit from Error.prototype
+ */
+/*!
+ * Primary Exports
+ */
+t.exports=AssertionError,AssertionError.prototype=Object.create(Error.prototype),
+/*!
+ * Statically set name
+ */
+AssertionError.prototype.name="AssertionError",
+/*!
+ * Ensure correct constructor
+ */
+AssertionError.prototype.constructor=AssertionError,AssertionError.prototype.toJSON=function(e){var t=exclude("constructor","toJSON","stack")({name:this.name},this);return!1!==e&&this.stack&&(t.stack=this.stack),t}})),require.register("chaijs~type-detect@0.1.1",(function(e,t){
+/*!
+ * type-detect
+ * Copyright(c) 2013 jake luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+/*!
+ * Primary Exports
+ */
+e=t.exports=getType;
+/*!
+ * Detectable javascript natives
+ */var r={"[object Array]":"array","[object RegExp]":"regexp","[object Function]":"function","[object Arguments]":"arguments","[object Date]":"date"};function getType(e){var t=Object.prototype.toString.call(e);return r[t]?r[t]:null===e?"null":void 0===e?"undefined":e===Object(e)?"object":typeof e}function Library(){this.tests={}}e.Library=Library,Library.prototype.of=getType,Library.prototype.define=function(e,t){return 1===arguments.length?this.tests[e]:(this.tests[e]=t,this)},Library.prototype.test=function(e,t){if(t===getType(e))return!0;var r=this.tests[t];if(r&&"regexp"===getType(r))return r.test(e);if(r&&"function"===getType(r))return r(e);throw new ReferenceError('Type test "'+t+'" not defined or invalid.')}})),require.register("chaijs~deep-eql@0.1.3",(function(e,t){
+/*!
+ * deep-eql
+ * Copyright(c) 2013 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+/*!
+ * Module dependencies
+ */
+var r,i=require("chaijs~type-detect@0.1.1");
+/*!
+ * Buffer.isBuffer browser shim
+ */try{r=require("buffer").Buffer}catch(e){(r={}).isBuffer=function(){return!1}}
+/*!
+ * Primary Export
+ */function deepEqual(e,t,n){return!!sameValue(e,t)||("date"===i(e)?
+/*!
+ * Compare two Date objects by asserting that
+ * the time values are equal using `saveValue`.
+ *
+ * @param {Date} a
+ * @param {Date} b
+ * @return {Boolean} result
+ */
+function dateEqual(e,t){return"date"===i(t)&&sameValue(e.getTime(),t.getTime())}
+/*!
+ * Compare two regular expressions by converting them
+ * to string and checking for `sameValue`.
+ *
+ * @param {RegExp} a
+ * @param {RegExp} b
+ * @return {Boolean} result
+ */(e,t):"regexp"===i(e)?function regexpEqual(e,t){return"regexp"===i(t)&&sameValue(e.toString(),t.toString())}
+/*!
+ * Assert deep equality of two `arguments` objects.
+ * Unfortunately, these must be sliced to arrays
+ * prior to test to ensure no bad behavior.
+ *
+ * @param {Arguments} a
+ * @param {Arguments} b
+ * @param {Array} memoize (optional)
+ * @return {Boolean} result
+ */(e,t):r.isBuffer(e)?
+/*!
+ * Extension to `iterableEqual` specifically
+ * for Node.js Buffers.
+ *
+ * @param {Buffer} a
+ * @param {Mixed} b
+ * @return {Boolean} result
+ */
+function bufferEqual(e,t){return!!r.isBuffer(t)&&iterableEqual(e,t)}
+/*!
+ * Block for `objectEqual` ensuring non-existing
+ * values don't get in.
+ *
+ * @param {Mixed} object
+ * @return {Boolean} result
+ */(e,t):"arguments"===i(e)?function argumentsEqual(e,t,r){return"arguments"===i(t)&&(e=[].slice.call(e),t=[].slice.call(t),deepEqual(e,t,r))}
+/*!
+ * Get enumerable properties of a given object.
+ *
+ * @param {Object} a
+ * @return {Array} property names
+ */(e,t,n):!!
+/*!
+ * Compare the types of two given objects and
+ * return if they are equal. Note that an Array
+ * has a type of `array` (not `object`) and arguments
+ * have a type of `arguments` (not `array`/`object`).
+ *
+ * @param {Mixed} a
+ * @param {Mixed} b
+ * @return {Boolean} result
+ */
+function typeEqual(e,t){return i(e)===i(t)}(e,t)&&("object"!==i(e)&&"object"!==i(t)&&"array"!==i(e)&&"array"!==i(t)?sameValue(e,t):
+/*!
+ * Recursively check the equality of two objects.
+ * Once basic sameness has been established it will
+ * defer to `deepEqual` for each enumerable key
+ * in the object.
+ *
+ * @param {Mixed} a
+ * @param {Mixed} b
+ * @return {Boolean} result
+ */
+function objectEqual(e,t,r){if(!isValue(e)||!isValue(t))return!1;if(e.prototype!==t.prototype)return!1;var i,n;if(r){for(i=0;i<r.length;i++)if(r[i][0]===e&&r[i][1]===t||r[i][0]===t&&r[i][1]===e)return!0}else r=[];try{var s=enumerable(e),o=enumerable(t)}catch(e){return!1}if(s.sort(),o.sort(),!iterableEqual(s,o))return!1;for(r.push([e,t]),i=s.length-1;i>=0;i--)if(n=s[i],!deepEqual(e[n],t[n],r))return!1;return!0}(e,t,n)))}
+/*!
+ * Strict (egal) equality test. Ensures that NaN always
+ * equals NaN and `-0` does not equal `+0`.
+ *
+ * @param {Mixed} a
+ * @param {Mixed} b
+ * @return {Boolean} equal match
+ */function sameValue(e,t){return e===t?0!==e||1/e==1/t:e!=e&&t!=t}function enumerable(e){var t=[];for(var r in e)t.push(r);return t}
+/*!
+ * Simple equality for flat iterable objects
+ * such as Arrays or Node.js buffers.
+ *
+ * @param {Iterable} a
+ * @param {Iterable} b
+ * @return {Boolean} result
+ */function iterableEqual(e,t){if(e.length!==t.length)return!1;for(var r=0,i=!0;r<e.length;r++)if(e[r]!==t[r]){i=!1;break}return i}function isValue(e){return null!=e}t.exports=deepEqual})),require.register("chai",(function(e,t){t.exports=require("chai/lib/chai.js")})),require.register("chai/lib/chai.js",(function(e,t){
+/*!
+ * chai
+ * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+var r=[];
+/*!
+ * Chai version
+ */(e=t.exports={}).version="2.1.0",
+/*!
+ * Assertion Error
+ */
+e.AssertionError=require("chaijs~assertion-error@1.0.0");
+/*!
+ * Utils for plugins (not exported)
+ */
+var i=require("chai/lib/chai/utils/index.js");e.use=function(e){return~r.indexOf(e)||(e(this,i),r.push(e)),this},
+/*!
+ * Utility Functions
+ */
+e.util=i;
+/*!
+ * Configuration
+ */
+var n=require("chai/lib/chai/config.js");e.config=n;
+/*!
+ * Primary `Assertion` prototype
+ */
+var s=require("chai/lib/chai/assertion.js");e.use(s);
+/*!
+ * Core Assertions
+ */
+var o=require("chai/lib/chai/core/assertions.js");e.use(o);
+/*!
+ * Expect interface
+ */
+var a=require("chai/lib/chai/interface/expect.js");e.use(a);
+/*!
+ * Should interface
+ */
+var c=require("chai/lib/chai/interface/should.js");e.use(c);
+/*!
+ * Assert interface
+ */
+var u=require("chai/lib/chai/interface/assert.js");e.use(u)})),require.register("chai/lib/chai/assertion.js",(function(e,t){
+/*!
+ * chai
+ * http://chaijs.com
+ * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+var r=require("chai/lib/chai/config.js");t.exports=function(e,t){
+/*!
+   * Module dependencies.
+   */
+var i=e.AssertionError,n=t.flag;
+/*!
+   * Module export.
+   */
+/*!
+   * Assertion Constructor
+   *
+   * Creates object for chaining.
+   *
+   * @api private
+   */
+function Assertion(e,t,r){n(this,"ssfi",r||arguments.callee),n(this,"object",e),n(this,"message",t)}e.Assertion=Assertion,Object.defineProperty(Assertion,"includeStack",{get:function(){return console.warn("Assertion.includeStack is deprecated, use chai.config.includeStack instead."),r.includeStack},set:function(e){console.warn("Assertion.includeStack is deprecated, use chai.config.includeStack instead."),r.includeStack=e}}),Object.defineProperty(Assertion,"showDiff",{get:function(){return console.warn("Assertion.showDiff is deprecated, use chai.config.showDiff instead."),r.showDiff},set:function(e){console.warn("Assertion.showDiff is deprecated, use chai.config.showDiff instead."),r.showDiff=e}}),Assertion.addProperty=function(e,r){t.addProperty(this.prototype,e,r)},Assertion.addMethod=function(e,r){t.addMethod(this.prototype,e,r)},Assertion.addChainableMethod=function(e,r,i){t.addChainableMethod(this.prototype,e,r,i)},Assertion.overwriteProperty=function(e,r){t.overwriteProperty(this.prototype,e,r)},Assertion.overwriteMethod=function(e,r){t.overwriteMethod(this.prototype,e,r)},Assertion.overwriteChainableMethod=function(e,r,i){t.overwriteChainableMethod(this.prototype,e,r,i)},
+/*!
+   * ### .assert(expression, message, negateMessage, expected, actual)
+   *
+   * Executes an expression and check expectations. Throws AssertionError for reporting if test doesn't pass.
+   *
+   * @name assert
+   * @param {Philosophical} expression to be tested
+   * @param {String or Function} message or function that returns message to display if fails
+   * @param {String or Function} negatedMessage or function that returns negatedMessage to display if negated expression fails
+   * @param {Mixed} expected value (remember to check for negation)
+   * @param {Mixed} actual (optional) will default to `this.obj`
+   * @api private
+   */
+Assertion.prototype.assert=function(e,s,o,a,c,u){var h=t.test(this,arguments);if(!0!==u&&(u=!1),!0!==r.showDiff&&(u=!1),!h){s=t.getMessage(this,arguments);var l=t.getActual(this,arguments);throw new i(s,{actual:l,expected:a,showDiff:u},r.includeStack?this.assert:n(this,"ssfi"))}},
+/*!
+   * ### ._obj
+   *
+   * Quick reference to stored `actual` value for plugin developers.
+   *
+   * @api private
+   */
+Object.defineProperty(Assertion.prototype,"_obj",{get:function(){return n(this,"object")},set:function(e){n(this,"object",e)}})}})),require.register("chai/lib/chai/config.js",(function(e,t){t.exports={includeStack:!1,showDiff:!0,truncateThreshold:40}})),require.register("chai/lib/chai/core/assertions.js",(function(e,t){
+/*!
+ * chai
+ * http://chaijs.com
+ * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t){var r=e.Assertion,i=(Object.prototype.toString,t.flag);function an(e,r){r&&i(this,"message",r),e=e.toLowerCase();var n=i(this,"object"),s=~["a","e","i","o","u"].indexOf(e.charAt(0))?"an ":"a ";this.assert(e===t.type(n),"expected #{this} to be "+s+e,"expected #{this} not to be "+s+e)}function includeChainingBehavior(){i(this,"contains",!0)}function include(e,n){n&&i(this,"message",n);var s=i(this,"object"),o=!1;if("array"===t.type(s)&&"object"===t.type(e)){for(var a in s)if(t.eql(s[a],e)){o=!0;break}}else if("object"===t.type(e)){if(!i(this,"negate")){for(var c in e)new r(s).property(c,e[c]);return}var u={};for(var c in e)u[c]=s[c];o=t.eql(u,e)}else o=s&&~s.indexOf(e);this.assert(o,"expected #{this} to include "+t.inspect(e),"expected #{this} to not include "+t.inspect(e))}function checkArguments(){var e=i(this,"object"),t=Object.prototype.toString.call(e);this.assert("[object Arguments]"===t,"expected #{this} to be arguments but got "+t,"expected #{this} to not be arguments")}function assertEqual(e,t){t&&i(this,"message",t);var r=i(this,"object");if(i(this,"deep"))return this.eql(e);this.assert(e===r,"expected #{this} to equal #{exp}","expected #{this} to not equal #{exp}",e,this._obj,!0)}function assertEql(e,r){r&&i(this,"message",r),this.assert(t.eql(e,i(this,"object")),"expected #{this} to deeply equal #{exp}","expected #{this} to not deeply equal #{exp}",e,this._obj,!0)}function assertAbove(e,t){t&&i(this,"message",t);var n=i(this,"object");if(i(this,"doLength")){new r(n,t).to.have.property("length");var s=n.length;this.assert(s>e,"expected #{this} to have a length above #{exp} but got #{act}","expected #{this} to not have a length above #{exp}",e,s)}else this.assert(n>e,"expected #{this} to be above "+e,"expected #{this} to be at most "+e)}function assertLeast(e,t){t&&i(this,"message",t);var n=i(this,"object");if(i(this,"doLength")){new r(n,t).to.have.property("length");var s=n.length;this.assert(s>=e,"expected #{this} to have a length at least #{exp} but got #{act}","expected #{this} to have a length below #{exp}",e,s)}else this.assert(n>=e,"expected #{this} to be at least "+e,"expected #{this} to be below "+e)}function assertBelow(e,t){t&&i(this,"message",t);var n=i(this,"object");if(i(this,"doLength")){new r(n,t).to.have.property("length");var s=n.length;this.assert(s<e,"expected #{this} to have a length below #{exp} but got #{act}","expected #{this} to not have a length below #{exp}",e,s)}else this.assert(n<e,"expected #{this} to be below "+e,"expected #{this} to be at least "+e)}function assertMost(e,t){t&&i(this,"message",t);var n=i(this,"object");if(i(this,"doLength")){new r(n,t).to.have.property("length");var s=n.length;this.assert(s<=e,"expected #{this} to have a length at most #{exp} but got #{act}","expected #{this} to have a length above #{exp}",e,s)}else this.assert(n<=e,"expected #{this} to be at most "+e,"expected #{this} to be above "+e)}function assertInstanceOf(e,r){r&&i(this,"message",r);var n=t.getName(e);this.assert(i(this,"object")instanceof e,"expected #{this} to be an instance of "+n,"expected #{this} to not be an instance of "+n)}function assertOwnProperty(e,r){r&&i(this,"message",r);var n=i(this,"object");this.assert(n.hasOwnProperty(e),"expected #{this} to have own property "+t.inspect(e),"expected #{this} to not have own property "+t.inspect(e))}function assertLength(e,t){t&&i(this,"message",t);var n=i(this,"object");new r(n,t).to.have.property("length");var s=n.length;this.assert(s==e,"expected #{this} to have a length of #{exp} but got #{act}","expected #{this} to not have a length of #{act}",e,s)}function assertKeys(e){var r,n=i(this,"object"),s=!0,o="keys must be given single argument of Array|Object|String, or multiple String arguments";switch(t.type(e)){case"array":if(arguments.length>1)throw new Error(o);break;case"object":if(arguments.length>1)throw new Error(o);e=Object.keys(e);break;default:e=Array.prototype.slice.call(arguments)}if(!e.length)throw new Error("keys required");var a=Object.keys(n),c=e,u=e.length,h=i(this,"any"),l=i(this,"all");if(h||l||(l=!0),h){var f=c.filter((function(e){return~a.indexOf(e)}));s=f.length>0}if(l&&(s=e.every((function(e){return~a.indexOf(e)})),i(this,"negate")||i(this,"contains")||(s=s&&e.length==a.length)),u>1){var p=(e=e.map((function(e){return t.inspect(e)}))).pop();l&&(r=e.join(", ")+", and "+p),h&&(r=e.join(", ")+", or "+p)}else r=t.inspect(e[0]);r=(u>1?"keys ":"key ")+r,r=(i(this,"contains")?"contain ":"have ")+r,this.assert(s,"expected #{this} to "+r,"expected #{this} to not "+r,c.slice(0).sort(),a.sort(),!0)}function assertThrows(e,n,s){s&&i(this,"message",s);var o=i(this,"object");new r(o,s).is.a("function");var a=!1,c=null,u=null,h=null;0===arguments.length?(n=null,e=null):e&&(e instanceof RegExp||"string"==typeof e)?(n=e,e=null):e&&e instanceof Error?(c=e,e=null,n=null):"function"==typeof e?"Error"===(u=e.prototype.name||e.name)&&e!==Error&&(u=(new e).name):e=null;try{o()}catch(r){if(c)return this.assert(r===c,"expected #{this} to throw #{exp} but #{act} was thrown","expected #{this} to not throw #{exp}",c instanceof Error?c.toString():c,r instanceof Error?r.toString():r),i(this,"object",r),this;if(e&&(this.assert(r instanceof e,"expected #{this} to throw #{exp} but #{act} was thrown","expected #{this} to not throw #{exp} but #{act} was thrown",u,r instanceof Error?r.toString():r),!n))return i(this,"object",r),this;var l="object"===t.type(r)&&"message"in r?r.message:""+r;if(null!=l&&n&&n instanceof RegExp)return this.assert(n.exec(l),"expected #{this} to throw error matching #{exp} but got #{act}","expected #{this} to throw error not matching #{exp}",n,l),i(this,"object",r),this;if(null!=l&&n&&"string"==typeof n)return this.assert(~l.indexOf(n),"expected #{this} to throw error including #{exp} but got #{act}","expected #{this} to throw error not including #{act}",n,l),i(this,"object",r),this;a=!0,h=r}var f="",p=null!==u?u:c?"#{exp}":"an error";a&&(f=" but #{act} was thrown"),this.assert(!0===a,"expected #{this} to throw "+p+f,"expected #{this} to not throw "+p+f,c instanceof Error?c.toString():c,h instanceof Error?h.toString():h),i(this,"object",h)}function isSubsetOf(e,t,r){return e.every((function(e){return r?t.some((function(t){return r(e,t)})):-1!==t.indexOf(e)}))}function assertChanges(e,t,n){n&&i(this,"message",n);var s=i(this,"object");new r(e,n).to.have.property(t),new r(s).is.a("function");var o=e[t];s(),this.assert(o!==e[t],"expected ."+t+" to change","expected ."+t+" to not change")}function assertIncreases(e,t,n){n&&i(this,"message",n);var s=i(this,"object");new r(e,n).to.have.property(t),new r(s).is.a("function");var o=e[t];s(),this.assert(e[t]-o>0,"expected ."+t+" to increase","expected ."+t+" to not increase")}function assertDecreases(e,t,n){n&&i(this,"message",n);var s=i(this,"object");new r(e,n).to.have.property(t),new r(s).is.a("function");var o=e[t];s(),this.assert(e[t]-o<0,"expected ."+t+" to decrease","expected ."+t+" to not decrease")}["to","be","been","is","and","has","have","with","that","which","at","of","same"].forEach((function(e){r.addProperty(e,(function(){return this}))})),r.addProperty("not",(function(){i(this,"negate",!0)})),r.addProperty("deep",(function(){i(this,"deep",!0)})),r.addProperty("any",(function(){i(this,"any",!0),i(this,"all",!1)})),r.addProperty("all",(function(){i(this,"all",!0),i(this,"any",!1)})),r.addChainableMethod("an",an),r.addChainableMethod("a",an),r.addChainableMethod("include",include,includeChainingBehavior),r.addChainableMethod("contain",include,includeChainingBehavior),r.addChainableMethod("contains",include,includeChainingBehavior),r.addChainableMethod("includes",include,includeChainingBehavior),r.addProperty("ok",(function(){this.assert(i(this,"object"),"expected #{this} to be truthy","expected #{this} to be falsy")})),r.addProperty("true",(function(){this.assert(!0===i(this,"object"),"expected #{this} to be true","expected #{this} to be false",!this.negate)})),r.addProperty("false",(function(){this.assert(!1===i(this,"object"),"expected #{this} to be false","expected #{this} to be true",!!this.negate)})),r.addProperty("null",(function(){this.assert(null===i(this,"object"),"expected #{this} to be null","expected #{this} not to be null")})),r.addProperty("undefined",(function(){this.assert(void 0===i(this,"object"),"expected #{this} to be undefined","expected #{this} not to be undefined")})),r.addProperty("exist",(function(){this.assert(null!=i(this,"object"),"expected #{this} to exist","expected #{this} to not exist")})),r.addProperty("empty",(function(){var e=i(this,"object"),t=e;Array.isArray(e)||"string"==typeof object?t=e.length:"object"==typeof e&&(t=Object.keys(e).length),this.assert(!t,"expected #{this} to be empty","expected #{this} not to be empty")})),r.addProperty("arguments",checkArguments),r.addProperty("Arguments",checkArguments),r.addMethod("equal",assertEqual),r.addMethod("equals",assertEqual),r.addMethod("eq",assertEqual),r.addMethod("eql",assertEql),r.addMethod("eqls",assertEql),r.addMethod("above",assertAbove),r.addMethod("gt",assertAbove),r.addMethod("greaterThan",assertAbove),r.addMethod("least",assertLeast),r.addMethod("gte",assertLeast),r.addMethod("below",assertBelow),r.addMethod("lt",assertBelow),r.addMethod("lessThan",assertBelow),r.addMethod("most",assertMost),r.addMethod("lte",assertMost),r.addMethod("within",(function(e,t,n){n&&i(this,"message",n);var s=i(this,"object"),o=e+".."+t;if(i(this,"doLength")){new r(s,n).to.have.property("length");var a=s.length;this.assert(a>=e&&a<=t,"expected #{this} to have a length within "+o,"expected #{this} to not have a length within "+o)}else this.assert(s>=e&&s<=t,"expected #{this} to be within "+o,"expected #{this} to not be within "+o)})),r.addMethod("instanceof",assertInstanceOf),r.addMethod("instanceOf",assertInstanceOf),r.addMethod("property",(function(e,r,n){n&&i(this,"message",n);var s=!!i(this,"deep"),o=s?"deep property ":"property ",a=i(this,"negate"),c=i(this,"object"),u=s?t.getPathInfo(e,c):null,h=s?u.exists:t.hasProperty(e,c),l=s?u.value:c[e];if(a&&void 0!==r){if(void 0===l)throw n=null!=n?n+": ":"",new Error(n+t.inspect(c)+" has no "+o+t.inspect(e))}else this.assert(h,"expected #{this} to have a "+o+t.inspect(e),"expected #{this} to not have "+o+t.inspect(e));void 0!==r&&this.assert(r===l,"expected #{this} to have a "+o+t.inspect(e)+" of #{exp}, but got #{act}","expected #{this} to not have a "+o+t.inspect(e)+" of #{act}",r,l),i(this,"object",l)})),r.addMethod("ownProperty",assertOwnProperty),r.addMethod("haveOwnProperty",assertOwnProperty),r.addChainableMethod("length",assertLength,(function assertLengthChain(){i(this,"doLength",!0)})),r.addMethod("lengthOf",assertLength),r.addMethod("match",(function(e,t){t&&i(this,"message",t);var r=i(this,"object");this.assert(e.exec(r),"expected #{this} to match "+e,"expected #{this} not to match "+e)})),r.addMethod("string",(function(e,n){n&&i(this,"message",n);var s=i(this,"object");new r(s,n).is.a("string"),this.assert(~s.indexOf(e),"expected #{this} to contain "+t.inspect(e),"expected #{this} to not contain "+t.inspect(e))})),r.addMethod("keys",assertKeys),r.addMethod("key",assertKeys),r.addMethod("throw",assertThrows),r.addMethod("throws",assertThrows),r.addMethod("Throw",assertThrows),r.addMethod("respondTo",(function(e,r){r&&i(this,"message",r);var n=i(this,"object"),s=i(this,"itself"),o="function"!==t.type(n)||s?n[e]:n.prototype[e];this.assert("function"==typeof o,"expected #{this} to respond to "+t.inspect(e),"expected #{this} to not respond to "+t.inspect(e))})),r.addProperty("itself",(function(){i(this,"itself",!0)})),r.addMethod("satisfy",(function(e,r){r&&i(this,"message",r);var n=e(i(this,"object"));this.assert(n,"expected #{this} to satisfy "+t.objDisplay(e),"expected #{this} to not satisfy"+t.objDisplay(e),!this.negate,n)})),r.addMethod("closeTo",(function(e,n,s){s&&i(this,"message",s);var o=i(this,"object");if(new r(o,s).is.a("number"),"number"!==t.type(e)||"number"!==t.type(n))throw new Error("the arguments to closeTo must be numbers");this.assert(Math.abs(o-e)<=n,"expected #{this} to be close to "+e+" +/- "+n,"expected #{this} not to be close to "+e+" +/- "+n)})),r.addMethod("members",(function(e,n){n&&i(this,"message",n);var s=i(this,"object");new r(s).to.be.an("array"),new r(e).to.be.an("array");var o=i(this,"deep")?t.eql:void 0;if(i(this,"contains"))return this.assert(isSubsetOf(e,s,o),"expected #{this} to be a superset of #{act}","expected #{this} to not be a superset of #{act}",s,e);this.assert(isSubsetOf(s,e,o)&&isSubsetOf(e,s,o),"expected #{this} to have the same members as #{act}","expected #{this} to not have the same members as #{act}",s,e)})),r.addChainableMethod("change",assertChanges),r.addChainableMethod("changes",assertChanges),r.addChainableMethod("increase",assertIncreases),r.addChainableMethod("increases",assertIncreases),r.addChainableMethod("decrease",assertDecreases),r.addChainableMethod("decreases",assertDecreases)}})),require.register("chai/lib/chai/interface/assert.js",(function(exports,module){
+/*!
+ * chai
+ * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+module.exports=function(chai,util){
+/*!
+   * Chai dependencies.
+   */
+var Assertion=chai.Assertion,flag=util.flag,assert=chai.assert=function(e,t){new Assertion(null,null,chai.assert).assert(e,t,"[ negation message unavailable ]")};
+/*!
+   * Module export.
+   */assert.fail=function(e,t,r,i){throw r=r||"assert.fail()",new chai.AssertionError(r,{actual:e,expected:t,operator:i},assert.fail)},assert.ok=function(e,t){new Assertion(e,t).is.ok},assert.notOk=function(e,t){new Assertion(e,t).is.not.ok},assert.equal=function(e,t,r){var i=new Assertion(e,r,assert.equal);i.assert(t==flag(i,"object"),"expected #{this} to equal #{exp}","expected #{this} to not equal #{act}",t,e)},assert.notEqual=function(e,t,r){var i=new Assertion(e,r,assert.notEqual);i.assert(t!=flag(i,"object"),"expected #{this} to not equal #{exp}","expected #{this} to equal #{act}",t,e)},assert.strictEqual=function(e,t,r){new Assertion(e,r).to.equal(t)},assert.notStrictEqual=function(e,t,r){new Assertion(e,r).to.not.equal(t)},assert.deepEqual=function(e,t,r){new Assertion(e,r).to.eql(t)},assert.notDeepEqual=function(e,t,r){new Assertion(e,r).to.not.eql(t)},assert.isAbove=function(e,t,r){new Assertion(e,r).to.be.above(t)},assert.isBelow=function(e,t,r){new Assertion(e,r).to.be.below(t)},assert.isTrue=function(e,t){new Assertion(e,t).is.true},assert.isFalse=function(e,t){new Assertion(e,t).is.false},assert.isNull=function(e,t){new Assertion(e,t).to.equal(null)},assert.isNotNull=function(e,t){new Assertion(e,t).to.not.equal(null)},assert.isUndefined=function(e,t){new Assertion(e,t).to.equal(void 0)},assert.isDefined=function(e,t){new Assertion(e,t).to.not.equal(void 0)},assert.isFunction=function(e,t){new Assertion(e,t).to.be.a("function")},assert.isNotFunction=function(e,t){new Assertion(e,t).to.not.be.a("function")},assert.isObject=function(e,t){new Assertion(e,t).to.be.a("object")},assert.isNotObject=function(e,t){new Assertion(e,t).to.not.be.a("object")},assert.isArray=function(e,t){new Assertion(e,t).to.be.an("array")},assert.isNotArray=function(e,t){new Assertion(e,t).to.not.be.an("array")},assert.isString=function(e,t){new Assertion(e,t).to.be.a("string")},assert.isNotString=function(e,t){new Assertion(e,t).to.not.be.a("string")},assert.isNumber=function(e,t){new Assertion(e,t).to.be.a("number")},assert.isNotNumber=function(e,t){new Assertion(e,t).to.not.be.a("number")},assert.isBoolean=function(e,t){new Assertion(e,t).to.be.a("boolean")},assert.isNotBoolean=function(e,t){new Assertion(e,t).to.not.be.a("boolean")},assert.typeOf=function(e,t,r){new Assertion(e,r).to.be.a(t)},assert.notTypeOf=function(e,t,r){new Assertion(e,r).to.not.be.a(t)},assert.instanceOf=function(e,t,r){new Assertion(e,r).to.be.instanceOf(t)},assert.notInstanceOf=function(e,t,r){new Assertion(e,r).to.not.be.instanceOf(t)},assert.include=function(e,t,r){new Assertion(e,r,assert.include).include(t)},assert.notInclude=function(e,t,r){new Assertion(e,r,assert.notInclude).not.include(t)},assert.match=function(e,t,r){new Assertion(e,r).to.match(t)},assert.notMatch=function(e,t,r){new Assertion(e,r).to.not.match(t)},assert.property=function(e,t,r){new Assertion(e,r).to.have.property(t)},assert.notProperty=function(e,t,r){new Assertion(e,r).to.not.have.property(t)},assert.deepProperty=function(e,t,r){new Assertion(e,r).to.have.deep.property(t)},assert.notDeepProperty=function(e,t,r){new Assertion(e,r).to.not.have.deep.property(t)},assert.propertyVal=function(e,t,r,i){new Assertion(e,i).to.have.property(t,r)},assert.propertyNotVal=function(e,t,r,i){new Assertion(e,i).to.not.have.property(t,r)},assert.deepPropertyVal=function(e,t,r,i){new Assertion(e,i).to.have.deep.property(t,r)},assert.deepPropertyNotVal=function(e,t,r,i){new Assertion(e,i).to.not.have.deep.property(t,r)},assert.lengthOf=function(e,t,r){new Assertion(e,r).to.have.length(t)},assert.Throw=function(e,t,r,i){("string"==typeof t||t instanceof RegExp)&&(r=t,t=null);var n=new Assertion(e,i).to.Throw(t,r);return flag(n,"object")},assert.doesNotThrow=function(e,t,r){"string"==typeof t&&(r=t,t=null),new Assertion(e,r).to.not.Throw(t)},assert.operator=function(val,operator,val2,msg){if(!~["==","===",">",">=","<","<=","!=","!=="].indexOf(operator))throw new Error('Invalid operator "'+operator+'"');var test=new Assertion(eval(val+operator+val2),msg);test.assert(!0===flag(test,"object"),"expected "+util.inspect(val)+" to be "+operator+" "+util.inspect(val2),"expected "+util.inspect(val)+" to not be "+operator+" "+util.inspect(val2))},assert.closeTo=function(e,t,r,i){new Assertion(e,i).to.be.closeTo(t,r)},assert.sameMembers=function(e,t,r){new Assertion(e,r).to.have.same.members(t)},assert.sameDeepMembers=function(e,t,r){new Assertion(e,r).to.have.same.deep.members(t)},assert.includeMembers=function(e,t,r){new Assertion(e,r).to.include.members(t)},assert.changes=function(e,t,r){new Assertion(e).to.change(t,r)},assert.doesNotChange=function(e,t,r){new Assertion(e).to.not.change(t,r)},assert.increases=function(e,t,r){new Assertion(e).to.increase(t,r)},assert.doesNotIncrease=function(e,t,r){new Assertion(e).to.not.increase(t,r)},assert.decreases=function(e,t,r){new Assertion(e).to.decrease(t,r)},assert.doesNotDecrease=function(e,t,r){new Assertion(e).to.not.decrease(t,r)}
+/*!
+   * Undocumented / untested
+   */,assert.ifError=function(e,t){new Assertion(e,t).to.not.be.ok},
+/*!
+   * Aliases.
+   */
+function alias(e,t){return assert[t]=assert[e],alias}("Throw","throw")("Throw","throws")}})),require.register("chai/lib/chai/interface/expect.js",(function(e,t){
+/*!
+ * chai
+ * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t){e.expect=function(t,r){return new e.Assertion(t,r)},e.expect.fail=function(t,r,i,n){throw i=i||"expect.fail()",new e.AssertionError(i,{actual:t,expected:r,operator:n},e.expect.fail)}}})),require.register("chai/lib/chai/interface/should.js",(function(e,t){
+/*!
+ * chai
+ * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t){var r=e.Assertion;function loadShould(){Object.defineProperty(Object.prototype,"should",{set:function shouldSetter(e){Object.defineProperty(this,"should",{value:e,enumerable:!0,configurable:!0,writable:!0})},get:function shouldGetter(){return this instanceof String||this instanceof Number?new r(this.constructor(this),null,shouldGetter):this instanceof Boolean?new r(1==this,null,shouldGetter):new r(this,null,shouldGetter)},configurable:!0});var t={fail:function(r,i,n,s){throw n=n||"should.fail()",new e.AssertionError(n,{actual:r,expected:i,operator:s},t.fail)},equal:function(e,t,i){new r(e,i).to.equal(t)},Throw:function(e,t,i,n){new r(e,n).to.Throw(t,i)},exist:function(e,t){new r(e,t).to.exist},not:{}};return t.not.equal=function(e,t,i){new r(e,i).to.not.equal(t)},t.not.Throw=function(e,t,i,n){new r(e,n).to.not.Throw(t,i)},t.not.exist=function(e,t){new r(e,t).to.not.exist},t.throw=t.Throw,t.not.throw=t.not.Throw,t}e.should=loadShould,e.Should=loadShould}})),require.register("chai/lib/chai/utils/addChainableMethod.js",(function(e,t){
+/*!
+ * Chai - addChainingMethod utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+/*!
+ * Module dependencies
+ */
+var r=require("chai/lib/chai/utils/transferFlags.js"),i=require("chai/lib/chai/utils/flag.js"),n=require("chai/lib/chai/config.js"),s="__proto__"in Object,o=/^(?:length|name|arguments|caller)$/,a=Function.prototype.call,c=Function.prototype.apply;t.exports=function(e,t,u,h){"function"!=typeof h&&(h=function(){});var l={method:u,chainingBehavior:h};e.__methods||(e.__methods={}),e.__methods[t]=l,Object.defineProperty(e,t,{get:function(){l.chainingBehavior.call(this);var t=function assert(){var e=i(this,"ssfi");e&&!1===n.includeStack&&i(this,"ssfi",assert);var t=l.method.apply(this,arguments);return void 0===t?this:t};if(s){var u=t.__proto__=Object.create(this);u.call=a,u.apply=c}else{Object.getOwnPropertyNames(e).forEach((function(r){if(!o.test(r)){var i=Object.getOwnPropertyDescriptor(e,r);Object.defineProperty(t,r,i)}}))}return r(this,t),t},configurable:!0})}})),require.register("chai/lib/chai/utils/addMethod.js",(function(e,t){
+/*!
+ * Chai - addMethod utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+var r=require("chai/lib/chai/config.js"),i=require("chai/lib/chai/utils/flag.js");t.exports=function(e,t,n){e[t]=function(){var s=i(this,"ssfi");s&&!1===r.includeStack&&i(this,"ssfi",e[t]);var o=n.apply(this,arguments);return void 0===o?this:o}}})),require.register("chai/lib/chai/utils/addProperty.js",(function(e,t){
+/*!
+ * Chai - addProperty utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t,r){Object.defineProperty(e,t,{get:function(){var e=r.call(this);return void 0===e?this:e},configurable:!0})}})),require.register("chai/lib/chai/utils/flag.js",(function(e,t){
+/*!
+ * Chai - flag utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t,r){var i=e.__flags||(e.__flags=Object.create(null));if(3!==arguments.length)return i[t];i[t]=r}})),require.register("chai/lib/chai/utils/getActual.js",(function(e,t){
+/*!
+ * Chai - getActual utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t){return t.length>4?t[4]:e._obj}})),require.register("chai/lib/chai/utils/getEnumerableProperties.js",(function(e,t){
+/*!
+ * Chai - getEnumerableProperties utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function getEnumerableProperties(e){var t=[];for(var r in e)t.push(r);return t}})),require.register("chai/lib/chai/utils/getMessage.js",(function(e,t){
+/*!
+ * Chai - message composition utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+/*!
+ * Module dependancies
+ */
+var r=require("chai/lib/chai/utils/flag.js"),i=require("chai/lib/chai/utils/getActual.js"),n=(require("chai/lib/chai/utils/inspect.js"),require("chai/lib/chai/utils/objDisplay.js"));t.exports=function(e,t){var s=r(e,"negate"),o=r(e,"object"),a=t[3],c=i(e,t),u=s?t[2]:t[1],h=r(e,"message");return"function"==typeof u&&(u=u()),u=(u=u||"").replace(/#{this}/g,n(o)).replace(/#{act}/g,n(c)).replace(/#{exp}/g,n(a)),h?h+": "+u:u}})),require.register("chai/lib/chai/utils/getName.js",(function(e,t){
+/*!
+ * Chai - getName utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e){if(e.name)return e.name;var t=/^\s?function ([^(]*)\(/.exec(e);return t&&t[1]?t[1]:""}})),require.register("chai/lib/chai/utils/getPathValue.js",(function(e,t){
+/*!
+ * Chai - getPathValue utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * @see https://github.com/logicalparadox/filtr
+ * MIT Licensed
+ */
+var r=require("chai/lib/chai/utils/getPathInfo.js");t.exports=function(e,t){return r(e,t).value}})),require.register("chai/lib/chai/utils/getPathInfo.js",(function(e,t){
+/*!
+ * Chai - getPathInfo utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+var r=require("chai/lib/chai/utils/hasProperty.js");
+/*!
+ * ## _getPathValue(parsed, obj)
+ *
+ * Helper companion function for `.parsePath` that returns
+ * the value located at the parsed address.
+ *
+ *      var value = getPathValue(parsed, obj);
+ *
+ * @param {Object} parsed definition from `parsePath`.
+ * @param {Object} object to search against
+ * @param {Number} object to search against
+ * @returns {Object|Undefined} value
+ * @api private
+ */
+function _getPathValue(e,t,r){for(var i,n=t,s=0,o=r=void 0===r?e.length:r;s<o;s++){var a=e[s];n?(void 0!==a.p?n=n[a.p]:void 0!==a.i&&(n=n[a.i]),s==o-1&&(i=n)):i=void 0}return i}t.exports=function getPathInfo(e,t){var i=
+/*!
+ * ## parsePath(path)
+ *
+ * Helper function used to parse string object
+ * paths. Use in conjunction with `_getPathValue`.
+ *
+ *      var parsed = parsePath('myobject.property.subprop');
+ *
+ * ### Paths:
+ *
+ * * Can be as near infinitely deep and nested
+ * * Arrays are also valid using the formal `myobject.document[3].property`.
+ *
+ * @param {String} path
+ * @returns {Object} parsed
+ * @api private
+ */
+function parsePath(e){return e.replace(/\[/g,".[").match(/(\\\.|[^.]+?)+/g).map((function(e){var t=/\[(\d+)\]$/.exec(e);return t?{i:parseFloat(t[1])}:{p:e}}))}(e),n=i[i.length-1],s={parent:_getPathValue(i,t,i.length-1),name:n.p||n.i,value:_getPathValue(i,t)};return s.exists=r(s.name,s.parent),s}})),require.register("chai/lib/chai/utils/hasProperty.js",(function(e,t){
+/*!
+ * Chai - hasProperty utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+var r=require("chai/lib/chai/utils/type.js"),i={number:Number,string:String};t.exports=function hasProperty(e,t){var n=r(t);return"null"!==n&&"undefined"!==n&&(i[n]&&"object"!=typeof t&&(t=new i[n](t)),e in t)}})),require.register("chai/lib/chai/utils/getProperties.js",(function(e,t){
+/*!
+ * Chai - getProperties utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function getProperties(e){var t=Object.getOwnPropertyNames(subject);function addProperty(e){-1===t.indexOf(e)&&t.push(e)}for(var r=Object.getPrototypeOf(subject);null!==r;)Object.getOwnPropertyNames(r).forEach(addProperty),r=Object.getPrototypeOf(r);return t}})),require.register("chai/lib/chai/utils/index.js",(function(e,t){
+/*!
+ * test utility
+ */
+(e=t.exports={}).test=require("chai/lib/chai/utils/test.js"),
+/*!
+ * type utility
+ */
+e.type=require("chai/lib/chai/utils/type.js"),
+/*!
+ * message utility
+ */
+e.getMessage=require("chai/lib/chai/utils/getMessage.js"),
+/*!
+ * actual utility
+ */
+e.getActual=require("chai/lib/chai/utils/getActual.js"),
+/*!
+ * Inspect util
+ */
+e.inspect=require("chai/lib/chai/utils/inspect.js"),
+/*!
+ * Object Display util
+ */
+e.objDisplay=require("chai/lib/chai/utils/objDisplay.js"),
+/*!
+ * Flag utility
+ */
+e.flag=require("chai/lib/chai/utils/flag.js"),
+/*!
+ * Flag transferring utility
+ */
+e.transferFlags=require("chai/lib/chai/utils/transferFlags.js"),
+/*!
+ * Deep equal utility
+ */
+e.eql=require("chaijs~deep-eql@0.1.3"),
+/*!
+ * Deep path value
+ */
+e.getPathValue=require("chai/lib/chai/utils/getPathValue.js"),
+/*!
+ * Deep path info
+ */
+e.getPathInfo=require("chai/lib/chai/utils/getPathInfo.js"),
+/*!
+ * Check if a property exists
+ */
+e.hasProperty=require("chai/lib/chai/utils/hasProperty.js"),
+/*!
+ * Function name
+ */
+e.getName=require("chai/lib/chai/utils/getName.js"),
+/*!
+ * add Property
+ */
+e.addProperty=require("chai/lib/chai/utils/addProperty.js"),
+/*!
+ * add Method
+ */
+e.addMethod=require("chai/lib/chai/utils/addMethod.js"),
+/*!
+ * overwrite Property
+ */
+e.overwriteProperty=require("chai/lib/chai/utils/overwriteProperty.js"),
+/*!
+ * overwrite Method
+ */
+e.overwriteMethod=require("chai/lib/chai/utils/overwriteMethod.js"),
+/*!
+ * Add a chainable method
+ */
+e.addChainableMethod=require("chai/lib/chai/utils/addChainableMethod.js"),
+/*!
+ * Overwrite chainable method
+ */
+e.overwriteChainableMethod=require("chai/lib/chai/utils/overwriteChainableMethod.js")})),require.register("chai/lib/chai/utils/inspect.js",(function(e,t){var r=require("chai/lib/chai/utils/getName.js"),i=require("chai/lib/chai/utils/getProperties.js"),n=require("chai/lib/chai/utils/getEnumerableProperties.js");t.exports=function inspect(e,t,r,i){return formatValue({showHidden:t,seen:[],stylize:function(e){return e}},e,void 0===r?2:r)};function formatValue(t,s,o){if(s&&"function"==typeof s.inspect&&s.inspect!==e.inspect&&(!s.constructor||s.constructor.prototype!==s)){var a=s.inspect(o);return"string"!=typeof a&&(a=formatValue(t,a,o)),a}var c=function formatPrimitive(e,t){switch(typeof t){case"undefined":return e.stylize("undefined","undefined");case"string":var r="'"+JSON.stringify(t).replace(/^"|"$/g,"").replace(/'/g,"\\'").replace(/\\"/g,'"')+"'";return e.stylize(r,"string");case"number":return 0===t&&1/t==-1/0?e.stylize("-0","number"):e.stylize(""+t,"number");case"boolean":return e.stylize(""+t,"boolean")}if(null===t)return e.stylize("null","null")}(t,s);if(c)return c;if(function(e){return"object"==typeof HTMLElement?e instanceof HTMLElement:e&&"object"==typeof e&&1===e.nodeType&&"string"==typeof e.nodeName}(s)){if("outerHTML"in s)return s.outerHTML;try{if(document.xmlVersion)return(new XMLSerializer).serializeToString(s);var u=document.createElementNS("http://www.w3.org/1999/xhtml","_");return u.appendChild(s.cloneNode(!1)),html=u.innerHTML.replace("><",">"+s.innerHTML+"<"),u.innerHTML="",html}catch(e){}}var h=n(s),l=t.showHidden?i(s):h;if(0===l.length||isError(s)&&(1===l.length&&"stack"===l[0]||2===l.length&&"description"===l[0]&&"stack"===l[1])){if("function"==typeof s){var f=(p=r(s))?": "+p:"";return t.stylize("[Function"+f+"]","special")}if(isRegExp(s))return t.stylize(RegExp.prototype.toString.call(s),"regexp");if(isDate(s))return t.stylize(Date.prototype.toUTCString.call(s),"date");if(isError(s))return formatError(s)}var p,d,b="",g=!1,y=["{","}"];(function isArray(e){return Array.isArray(e)||"object"==typeof e&&"[object Array]"===objectToString(e)}(s)&&(g=!0,y=["[","]"]),"function"==typeof s)&&(b=" [Function"+(f=(p=r(s))?": "+p:"")+"]");return isRegExp(s)&&(b=" "+RegExp.prototype.toString.call(s)),isDate(s)&&(b=" "+Date.prototype.toUTCString.call(s)),isError(s)?formatError(s):0!==l.length||g&&0!=s.length?o<0?isRegExp(s)?t.stylize(RegExp.prototype.toString.call(s),"regexp"):t.stylize("[Object]","special"):(t.seen.push(s),d=g?function formatArray(e,t,r,i,n){for(var s=[],o=0,a=t.length;o<a;++o)Object.prototype.hasOwnProperty.call(t,String(o))?s.push(formatProperty(e,t,r,i,String(o),!0)):s.push("");return n.forEach((function(n){n.match(/^\d+$/)||s.push(formatProperty(e,t,r,i,n,!0))})),s}(t,s,o,h,l):l.map((function(e){return formatProperty(t,s,o,h,e,g)})),t.seen.pop(),function reduceToSingleString(e,t,r){if(e.reduce((function(e,t){return t.indexOf("\n")>=0&&0,e+t.length+1}),0)>60)return r[0]+(""===t?"":t+"\n ")+" "+e.join(",\n  ")+" "+r[1];return r[0]+t+" "+e.join(", ")+" "+r[1]}(d,b,y)):y[0]+b+y[1]}function formatError(e){return"["+Error.prototype.toString.call(e)+"]"}function formatProperty(e,t,r,i,n,s){var o,a;if(t.__lookupGetter__&&(t.__lookupGetter__(n)?a=t.__lookupSetter__(n)?e.stylize("[Getter/Setter]","special"):e.stylize("[Getter]","special"):t.__lookupSetter__(n)&&(a=e.stylize("[Setter]","special"))),i.indexOf(n)<0&&(o="["+n+"]"),a||(e.seen.indexOf(t[n])<0?(a=formatValue(e,t[n],null===r?null:r-1)).indexOf("\n")>-1&&(a=s?a.split("\n").map((function(e){return"  "+e})).join("\n").substr(2):"\n"+a.split("\n").map((function(e){return"   "+e})).join("\n")):a=e.stylize("[Circular]","special")),void 0===o){if(s&&n.match(/^\d+$/))return a;(o=JSON.stringify(""+n)).match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)?(o=o.substr(1,o.length-2),o=e.stylize(o,"name")):(o=o.replace(/'/g,"\\'").replace(/\\"/g,'"').replace(/(^"|"$)/g,"'"),o=e.stylize(o,"string"))}return o+": "+a}function isRegExp(e){return"object"==typeof e&&"[object RegExp]"===objectToString(e)}function isDate(e){return"object"==typeof e&&"[object Date]"===objectToString(e)}function isError(e){return"object"==typeof e&&"[object Error]"===objectToString(e)}function objectToString(e){return Object.prototype.toString.call(e)}})),require.register("chai/lib/chai/utils/objDisplay.js",(function(e,t){
+/*!
+ * Chai - flag utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+/*!
+ * Module dependancies
+ */
+var r=require("chai/lib/chai/utils/inspect.js"),i=require("chai/lib/chai/config.js");t.exports=function(e){var t=r(e),n=Object.prototype.toString.call(e);if(i.truncateThreshold&&t.length>=i.truncateThreshold){if("[object Function]"===n)return e.name&&""!==e.name?"[Function: "+e.name+"]":"[Function]";if("[object Array]"===n)return"[ Array("+e.length+") ]";if("[object Object]"===n){var s=Object.keys(e);return"{ Object ("+(s.length>2?s.splice(0,2).join(", ")+", ...":s.join(", "))+") }"}return t}return t}})),require.register("chai/lib/chai/utils/overwriteMethod.js",(function(e,t){
+/*!
+ * Chai - overwriteMethod utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t,r){var i=e[t],_super=function(){return this};i&&"function"==typeof i&&(_super=i),e[t]=function(){var e=r(_super).apply(this,arguments);return void 0===e?this:e}}})),require.register("chai/lib/chai/utils/overwriteProperty.js",(function(e,t){
+/*!
+ * Chai - overwriteProperty utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t,r){var i=Object.getOwnPropertyDescriptor(e,t),_super=function(){};i&&"function"==typeof i.get&&(_super=i.get),Object.defineProperty(e,t,{get:function(){var e=r(_super).call(this);return void 0===e?this:e},configurable:!0})}})),require.register("chai/lib/chai/utils/overwriteChainableMethod.js",(function(e,t){
+/*!
+ * Chai - overwriteChainableMethod utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t,r,i){var n=e.__methods[t],s=n.chainingBehavior;n.chainingBehavior=function(){var e=i(s).call(this);return void 0===e?this:e};var o=n.method;n.method=function(){var e=r(o).apply(this,arguments);return void 0===e?this:e}}})),require.register("chai/lib/chai/utils/test.js",(function(e,t){
+/*!
+ * Chai - test utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+/*!
+ * Module dependancies
+ */
+var r=require("chai/lib/chai/utils/flag.js");t.exports=function(e,t){var i=r(e,"negate"),n=t[0];return i?!n:n}})),require.register("chai/lib/chai/utils/transferFlags.js",(function(e,t){
+/*!
+ * Chai - transferFlags utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+t.exports=function(e,t,r){var i=e.__flags||(e.__flags=Object.create(null));for(var n in t.__flags||(t.__flags=Object.create(null)),r=3!==arguments.length||r,i)(r||"object"!==n&&"ssfi"!==n&&"message"!=n)&&(t.__flags[n]=i[n])}})),require.register("chai/lib/chai/utils/type.js",(function(e,t){
+/*!
+ * Chai - type utility
+ * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
+ * MIT Licensed
+ */
+/*!
+ * Detectable javascript natives
+ */
+var r={"[object Arguments]":"arguments","[object Array]":"array","[object Date]":"date","[object Function]":"function","[object Number]":"number","[object RegExp]":"regexp","[object String]":"string"};t.exports=function(e){var t=Object.prototype.toString.call(e);return r[t]?r[t]:null===e?"null":void 0===e?"undefined":e===Object(e)?"object":typeof e}})),"object"==typeof exports?module.exports=require("chai"):"function"==typeof define&&define.amd?define("chai",[],(function(){return require("chai")})):(this||window).chai=require("chai")}();

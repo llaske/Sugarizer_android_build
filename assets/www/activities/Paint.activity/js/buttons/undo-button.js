@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-define([],function(){function a(){PaintApp.undoCanvas()}function b(){var b=document.getElementById("undo-button");PaintApp.elements.undoButton=b,b.addEventListener("click",a)}function c(){var a=document.getElementById("undo-button");PaintApp.elements.undoButton=a,PaintApp.elements.undoButton.disabled=!0}return{initGui:b,hideGui:c}});
+define([],(function(){function undo(){PaintApp.undoCanvas()}return{initGui:function initGui(){var n=document.getElementById("undo-button");PaintApp.elements.undoButton=n,n.addEventListener("click",undo)},hideGui:function hideGui(){var n=document.getElementById("undo-button");PaintApp.elements.undoButton=n,PaintApp.elements.undoButton.disabled=!0}}}));

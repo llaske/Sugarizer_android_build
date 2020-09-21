@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-var l10n;__$FC=function(a){var b=l10n.get(a);return void 0!=b&&""!=b?b.replace("%27","'").replace("%22",'"'):"sounddir"==a?l10n.language.code:a};
+var l10n;__$FC=function(n){var e=l10n.get(n);return null!=e&&""!=e?e.replace("%27","'").replace("%22",'"'):"sounddir"==n?l10n.language.code:n};

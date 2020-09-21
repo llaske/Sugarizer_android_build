@@ -1,0 +1,1 @@
+function calculate(e,t){const c=e.pop(),n=e.pop();switch(t){case"+":return n+c;case"*":return n*c;case"-":return n-c;case"/":return n/c}}function evaluator(e,t){const c=[],n=t?t+1:e.length;let r=!0;for(let t=0;t<n;t++){const n=e[t];if("number"==typeof n)c.push(n);else{const e=calculate(c,n);if(r=allowedCheck(e),!r)break;c.push(e)}}return{allowed:r,result:c.pop()}}

@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-requirejs.config({baseUrl:"lib",paths:{activity:"../js"}});var getUrlParameter=function(a){var b=RegExp("[?&]"+a+"=([^&]*)").exec(window.location.search);return b&&decodeURIComponent(b[1].replace(/\+/g," "))};getUrlParameter("onsugar")||requirejs(["activity/activity"]);
+requirejs.config({baseUrl:"lib",paths:{activity:"../js"}});var getUrlParameter=function(e){var r=RegExp("[?&]"+e+"=([^&]*)").exec(window.location.search);return r&&decodeURIComponent(r[1].replace(/\+/g," "))};getUrlParameter("onsugar")||requirejs(["activity/activity"]);

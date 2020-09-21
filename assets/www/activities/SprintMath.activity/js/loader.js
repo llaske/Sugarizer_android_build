@@ -1,9 +1,1 @@
-requirejs.config({
-    baseUrl: "lib",
-    paths: {
-        activity: "../js"
-    }
-});
-
-requirejs(["activity/activity"]);
-
+requirejs.config({baseUrl:"lib",paths:{activity:"../js"}}),requirejs(["activity/activity"]);

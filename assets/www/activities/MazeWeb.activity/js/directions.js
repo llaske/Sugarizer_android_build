@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-define(function(a){var b={};return b.orders=["north","east","south","west"],b.orders.forEach(function(a,c){b[a]=c}),b.getOpposite=function(a){switch(a){case"north":return"south";case"south":return"north";case"east":return"west";case"west":return"east"}},b});
+define((function(t){var e={orders:["north","east","south","west"]};return e.orders.forEach((function(t,r){e[t]=r})),e.getOpposite=function(t){switch(t){case"north":return"south";case"south":return"north";case"east":return"west";case"west":return"east"}},e}));

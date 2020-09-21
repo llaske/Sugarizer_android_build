@@ -1,2 +1,1 @@
-/*! Sugarizer 2020-03-14 */
-enyo.kind({name:"onyx.PickerDecorator",kind:"onyx.MenuDecorator",classes:"onyx-picker-decorator",defaultKind:"onyx.PickerButton",handlers:{onChange:"change"},change:function(a,b){this.waterfallDown("onChange",b)}});
+enyo.kind({name:"onyx.PickerDecorator",kind:"onyx.MenuDecorator",classes:"onyx-picker-decorator",defaultKind:"onyx.PickerButton",handlers:{onChange:"change"},change:function(n,e){this.waterfallDown("onChange",e)}});
