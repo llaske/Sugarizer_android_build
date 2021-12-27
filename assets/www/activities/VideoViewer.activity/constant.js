@@ -1,1 +1,0 @@
-var constant={pageCount:4};constant.librariesUrl=("https"==document.location.protocol.substr(0,5)?"https":"http")+"://sugarizer.org/content/videos.json",constant.videoType="mp4";

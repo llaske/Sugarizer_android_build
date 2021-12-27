@@ -1,0 +1,1 @@
+var constant={pageCount:4,librariesUrl:"https://sugarizer.org/content/videos.json",videoType:"mp4"};
