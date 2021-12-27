@@ -1,1 +1,0 @@
-chrome.app.runtime.onLaunched.addListener((function(){chrome.app.window.create("../sandbox.html",{id:"mainwin",state:"fullscreen"},(function(n){}))}));

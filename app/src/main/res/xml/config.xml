@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="15000" id="org.olpc_france.sugarizer" version="1.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="16000" id="org.olpc_france.sugarizer" version="1.6.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
@@ -48,6 +48,9 @@
     </feature>
     <feature name="VolumeControl">
         <param name="android-package" value="com.develcode.plugins.volumeControl.VolumeControl" />
+    </feature>
+    <feature name="AudioInputCapture">
+        <param name="android-package" value="com.exelerus.cordova.audioinputcapture.AudioInputCapture" />
     </feature>
     <feature name="CDVIonicKeyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
