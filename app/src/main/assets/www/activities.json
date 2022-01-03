@@ -16,8 +16,8 @@
 	{"id": "org.olpcfrance.MemorizeActivity", "name": "Memorize", "version": 1, "directory": "activities/Memorize.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.olpg-france.physicsjs", "name": "Physics JS", "version": 1, "directory": "activities/PhysicsJS.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.sugarlabs.CalculateActivity", "name": "Calculate", "version": 1, "directory": "activities/Calculate.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
-	{"id": "org.sugarlabs.TurtleBlocksJS", "name": "Turtle Blocks JS", "version": 1, "directory": "activities/TurtleBlocksJS.activity", "icon": "activity/activity-icon.svg", "favorite": false, "activityId": null},
 	{"id": "org.sugarlabs.Clock", "name": "Clock Web", "version": 1, "directory": "activities/Clock.activity", "icon": "activity/activity-clock.svg", "favorite": true, "activityId": null},
+	{"id": "org.sugarlabs.Story", "name": "Story", "version": 1, "directory": "activities/Story.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.sugarlabs.SpeakActivity", "name": "Speak", "favorite": true, "version": 1, "directory": "activities/Speak.activity", "icon": "activity/activity-icon.svg", "activityId": null},
 	{"id": "org.sugarlabs.moon", "name": "Moon", "version": 1, "directory": "activities/Moon.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.olpcfrance.RecordActivity", "name": "Record", "version": 1, "directory": "activities/Record.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
@@ -38,7 +38,6 @@
 	{"id": "org.sugarlabs.Blockrain", "name": "Blockrain", "version": 1, "directory": "activities/Blockrain.activity", "icon": "activity/activity-icon.svg", "favorite": false, "activityId": null},
 	{"id": "org.sugarlabs.StopwatchActivity", "name": "Stopwatch", "version": 1, "directory": "activities/Stopwatch.activity", "icon": "activity/activity-icon.svg", "favorite": false, "activityId": null},
 	{"id": "com.homegrownapps.flip", "name": "Flip", "version": 1, "directory": "activities/Flip.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
-	{"id": "org.somosazucar.JappyActivity", "name": "Jappy", "favorite": false, "version": 1, "directory": "activities/Jappy.activity", "icon": "activity/activity-icon.svg", "activityId": null},
 	{"id": "org.olpcfrance.qrcode", "name": "QRCode", "version": 1, "directory": "activities/QRCode.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.sugarlabs.Markdown", "name": "Markdown", "version": 3, "directory": "activities/Markdown.activity", "icon": "activity/activity-icon.svg", "favorite": false, "activityId": null},
 	{"id": "org.sugarlabs.Scratch", "name": "Scratch", "favorite": true, "version": 1, "directory": "activities/Scratch.activity", "icon": "activity/activity-icon.svg", "activityId": null},
@@ -53,6 +52,7 @@
 	{"id": "org.sugarlabs.Constellation", "name": "Constellation", "version": 1, "directory": "activities/Constellation.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.sugarlabs.Write", "name": "Write", "version": 1, "directory": "activities/Write.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
 	{"id": "org.sugarlabs.Planets", "name": "Planets", "version": 1, "directory": "activities/Planets.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
-	{"id": "org.sugarlabs.Implode", "name": "Implode", "version": 1, "directory": "activities/Implode.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null}
+	{"id": "org.sugarlabs.Implode", "name": "Implode", "version": 1, "directory": "activities/Implode.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null},
+	{"id": "org.sugarlabs.Measure", "name": "Measure", "version": 1, "directory": "activities/Measure.activity", "icon": "activity/activity-icon.svg", "favorite": true, "activityId": null}
 
 ]

@@ -1,1 +1,0 @@
-function computeSize(){document.getElementById("sugarizerframe").height=window.innerHeight}computeSize(),window.onresize=computeSize,window.addEventListener("message",(function(e){chrome.app.window.current().close()}));
