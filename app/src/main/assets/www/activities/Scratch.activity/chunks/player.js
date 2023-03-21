@@ -6,7 +6,7 @@ var GUI=(window.webpackJsonpGUI=window.webpackJsonpGUI||[]).push([["player"],{".
 /*!***********************************!*\
   !*** ./src/playground/player.css ***!
   \***********************************/
-/*! no static exports found */function(e,s,n){var o=n(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/postcss-loader/src??postcss!./player.css */"./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./src/playground/player.css");"string"==typeof o&&(o=[[e.i,o,""]]);var r={hmr:!0,transform:void 0,insertInto:void 0};n(/*! ../../node_modules/style-loader/lib/addStyles.js */"./node_modules/style-loader/lib/addStyles.js")(o,r);o.locals&&(e.exports=o.locals)},"./src/playground/player.jsx":
+/*! no static exports found */function(e,s,n){var o=n(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/postcss-loader/src??postcss!./player.css */"./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./src/playground/player.css");"string"==typeof o&&(o=[[e.i,o,""]]);var r={hmr:!0,transform:undefined,insertInto:void 0};n(/*! ../../node_modules/style-loader/lib/addStyles.js */"./node_modules/style-loader/lib/addStyles.js")(o,r);o.locals&&(e.exports=o.locals)},"./src/playground/player.jsx":
 /*!***********************************!*\
   !*** ./src/playground/player.jsx ***!
   \***********************************/
