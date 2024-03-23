@@ -1,1 +1,1 @@
-var l10n_s;requirejs.config({baseUrl:"lib",paths:{activity:"../js"}}),requirejs(["activity/activity"]),requirejs(["webL10n","sugar-web/env","sugar-web/datastore"],(function(e,i,r){l10n_s=e}));
+var l10n_s;requirejs.config({baseUrl:"lib",paths:{activity:"../js"}}),requirejs(["activity/activity"]),requirejs(["l10n","sugar-web/env","sugar-web/datastore"],(function(i,e,r){l10n_s=i}));
