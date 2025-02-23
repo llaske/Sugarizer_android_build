@@ -1,1 +1,0 @@
-define(["sugar-web/env","sugar-web/bus/sugarizer","sugar-web/bus/sugaros"],(function(r,s,u){"use strict";return r.isSugarizer()?s:u}));

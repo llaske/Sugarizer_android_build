@@ -41,6 +41,7 @@ The Sugarizer desktop application has four possible arguments:
 * `--sdebug` to open Sugarizer with the debug console
 * `--logoff` to logoff the previous user if one is connected (unsynchronized content will be lost)
 * `--init` to remove all existing Journal and settings (all will be lost)
+* `--launch <activityid>` to open Sugarizer with a specific activity (e.g. `--launch org.olpcfrance.Abecedarium`). If no user is created/connected, it will be asked to create/connect one first.
 
 If you're a developer you could also launch Sugarizer desktop application using [electron](https://github.com/electron/electron). First, install Node.js and npm on your computer. See [here](http://nodejs.org/) for more information. Then install electron and specific modules for Sugarizer by running:
 
@@ -233,7 +234,7 @@ To remove media content for **Abecedarium**, remove directories:
 
 The activity will look for media content on the server referenced in [activities/Abecedarium.activity/database/db_url.json](activities/Abecedarium.activity/database/db_url.json), by default `http://server.sugarizer.org/activities/Abecedarium.activity/`.
 
-To remove resources for **Etoys**, remove directory [activities/Etoys.activity/resources](activities/Etoys.activity/resources) and replace the value `resources/etoys.image` in [activities/Etoys.activity/index.html](activities/Etoys.activity/index.html) by the remote location of the resources, for example `http://server.sugarizer.org/activities/Etoys.activity/resources/etoys.image`.
+To remove resources for **Etoys**, remove directory [activities/Etoys.activity/resources](activities/Etoys.activity/resources) and the file [activities/Etoys.activity/etoys.image](activities/Etoys.activity/etoys.image). Then replace the value `resources/etoys.image` in [activities/Etoys.activity/index.html](activities/Etoys.activity/index.html) by the remote location of the resources, for example `http://server.sugarizer.org/activities/Etoys.activity/etoys.image`.
 
 To remove resources for **Scratch**, remove directory [activities/Scratch.activity/static/internal-assets](activities/Scratch.activity/static/internal-assets) and remove the value `class="offlinemode"` in [activities/Scratch.activity/index.html](activities/Scratch.activity/index.html).
 
@@ -262,20 +263,17 @@ At the end of the process, all JavaScript files in all directories have been rep
 
 If you're not a developer and you want to translate Sugarizer into your own language, please go to the [Sugarizer translation platform](http://translate.sugarizer.org) where you will be able to do that. If you're a developer, the following paragraphs will explain to you how the Sugarizer localization system works.
 
-Sugarizer use [webL10n](https://github.com/fabi1cazenave/webL10n) localization system by Fabien Cazenave.
+Sugarizer use [i18next](https://www.i18next.com/) localization system.
 
-Here is how to add a new translation. See a video tutorial [here](https://youtu.be/vTPVegrVm5A).
+All strings are localized in JSON files in the [locales](locales) directory at the root of the repository.
+If you want to add a new translation, copy the `en.json` files in a new one and:
 
-All strings are localized in the [locale.ini](locale.ini) file at the root of the repository.
-If you want to add a new translation, copy the whole [en] section at the end of the file and:
+* Replace "en" in the new file name by the [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of your language. For example, "fr.json" for French,
+* Substitute the right side of the ":" character on each line of the file by the string localized in your language. For example:
 
-* Replace "en" by the [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of your language. For example, "fr" for French,
-* Substitute the right side of the "=" character on each line by the string localized in your language. For example:
-
-		[fr]
-		StartNew=Commencer un nouveau
-		NameActivity=Activité {{name}}
-		RemoveFavorite=Retirer le favori
+		"StartNew": "Commencer un nouveau",
+		"NameActivity": "Activité {{name}}",
+		"RemoveFavorite": "Retirer le favori",
 
 Warning: Note that text inside {{}} must not be localized. So here, **{{name}}** is not translated.
 
@@ -286,13 +284,13 @@ Sugarizer automatically detects the navigator language. To enable this detection
 
 Sugarizer settings display a list of all available languages. You need to add your language in this dialog. For this you have to:
 
-* Add a new string in [locale.ini](locale.ini) with the name of your language in English. For example:
+* Add a new string in [locales/en.json](locales/en.json) with the name of your language in English. For example:
 
-		French=French
+		"French": "French",
 
-* Add the same line for all languages/sections in the file. If you're able to do that, translate the right side of the "=" character with the localized string for the name of your language. If you don't know how to translate it, just use the English word. For example:
+* Add the same line in all other language files. If you're able to do that, translate the right side of the ":" character with the localized string for the name of your language. If you don't know how to translate it, just use the English word. For example:
 
-		French=Français
+		"French": "Français",
 
 * Add your string in the [js/dialog.js](js/dialog.js) file in the create function of the Enyo class Sugar.DialogLanguage. You should give the ISO 639-1 language code and the new string for your language name. For example:
 
@@ -318,3 +316,4 @@ Read [CONTRIBUTING](CONTRIBUTING.md) to learn more about how to contribute to Su
 Sugarizer is licensed under the **Apache-2.0** license. See [LICENSE](LICENSE) for full license text.  Most Sugarizer activities use this license too but some use a different license, see [here](docs/licenses.md) for details.
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fllaske%2Fsugarizer.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2Fllaske%2Fsugarizer?ref=badge_shield&issueType=license)

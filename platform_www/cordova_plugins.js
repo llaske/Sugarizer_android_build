@@ -191,6 +191,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "runs": true
     },
     {
+      "id": "cordova-plugin-file.androidEntry",
+      "file": "plugins/cordova-plugin-file/www/android/Entry.js",
+      "pluginId": "cordova-plugin-file",
+      "merges": [
+        "Entry"
+      ]
+    },
+    {
       "id": "cordova-plugin-file.androidFileSystem",
       "file": "plugins/cordova-plugin-file/www/android/FileSystem.js",
       "pluginId": "cordova-plugin-file",
@@ -219,22 +227,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-device",
       "clobbers": [
         "device"
-      ]
-    },
-    {
-      "id": "cordova-plugin-device-motion.Acceleration",
-      "file": "plugins/cordova-plugin-device-motion/www/Acceleration.js",
-      "pluginId": "cordova-plugin-device-motion",
-      "clobbers": [
-        "Acceleration"
-      ]
-    },
-    {
-      "id": "cordova-plugin-device-motion.accelerometer",
-      "file": "plugins/cordova-plugin-device-motion/www/accelerometer.js",
-      "pluginId": "cordova-plugin-device-motion",
-      "clobbers": [
-        "navigator.accelerometer"
       ]
     },
     {
@@ -366,8 +358,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/cordova-plugin-network-information/www/network.js",
       "pluginId": "cordova-plugin-network-information",
       "clobbers": [
-        "navigator.connection",
-        "navigator.network.connection"
+        "navigator.connection"
       ]
     },
     {
@@ -376,30 +367,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-network-information",
       "clobbers": [
         "Connection"
-      ]
-    },
-    {
-      "id": "cordova-plugin-qrscanner.QRScanner",
-      "file": "plugins/cordova-plugin-qrscanner/www/www.min.js",
-      "pluginId": "cordova-plugin-qrscanner",
-      "clobbers": [
-        "QRScanner"
-      ]
-    },
-    {
-      "id": "cordova-plugin-splashscreen.SplashScreen",
-      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-      "pluginId": "cordova-plugin-splashscreen",
-      "clobbers": [
-        "navigator.splashscreen"
-      ]
-    },
-    {
-      "id": "com.develcode.plugins.volumeControl.VolumeControl",
-      "file": "plugins/com.develcode.plugins.volumeControl/www/VolumeControl.js",
-      "pluginId": "com.develcode.plugins.volumeControl",
-      "clobbers": [
-        "cordova.plugins.VolumeControl"
       ]
     },
     {
@@ -417,28 +384,41 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "window.Keyboard"
       ]
+    },
+    {
+      "id": "com.develcode.plugins.volumeControl.VolumeControl",
+      "file": "plugins/com.develcode.plugins.volumeControl/www/VolumeControl.js",
+      "pluginId": "com.develcode.plugins.volumeControl",
+      "clobbers": [
+        "cordova.plugins.VolumeControl"
+      ]
+    },
+    {
+      "id": "cordova-plugin-qrscanner-12.QRScanner",
+      "file": "plugins/cordova-plugin-qrscanner-12/www/www.min.js",
+      "pluginId": "cordova-plugin-qrscanner-12",
+      "clobbers": [
+        "QRScanner"
+      ]
     }
   ];
   module.exports.metadata = {
-    "cordova-plugin-whitelist": "1.3.5",
-    "cordova-plugin-inappbrowser": "5.0.0",
-    "cordova-plugin-camera": "5.0.1",
-    "cordova-plugin-file": "6.0.2",
-    "cordova-plugin-device": "2.0.3",
-    "cordova-plugin-device-motion": "2.0.1",
+    "cordova-plugin-inappbrowser": "6.0.0",
+    "cordova-plugin-camera": "7.0.0",
+    "cordova-plugin-file": "8.1.0",
+    "cordova-plugin-device": "3.0.0",
     "cordova-plugin-dialogs": "2.0.2",
-    "cordova-plugin-file-transfer": "1.7.1",
+    "cordova-plugin-file-transfer": "2.0.0",
     "cordova-plugin-fullscreen": "1.3.0",
     "cordova-plugin-ios-longpress-fix": "1.1.0",
-    "cordova-plugin-media": "5.0.3",
-    "cordova-plugin-media-capture": "3.0.3",
-    "cordova-plugin-network-information": "2.0.2",
-    "cordova-plugin-qrscanner": "3.0.1",
-    "cordova-plugin-splashscreen": "6.0.0",
+    "cordova-plugin-media": "7.0.0",
+    "cordova-plugin-media-capture": "5.0.0",
+    "cordova-plugin-network-information": "3.0.0",
     "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-plugin-vibration": "3.1.1",
+    "cordova-plugin-audioinput": "1.0.3",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
     "com.develcode.plugins.volumeControl": "1.0",
-    "cordova-plugin-audioinput": "1.0.2",
-    "cordova-plugin-ionic-keyboard": "2.2.0"
+    "cordova-plugin-qrscanner-12": "3.0.9"
   };
 });

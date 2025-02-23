@@ -18,16 +18,16 @@ cordova.define("cordova-plugin-media-capture.init", function(require, exports, m
  * specific language governing permissions and limitations
  * under the License.
  *
-*/
+ */
 
-var cordova = require('cordova');
-var helpers = require('./helpers');
+const cordova = require('cordova');
+const helpers = require('./helpers');
 
-var SUCCESS_EVENT = 'pendingcaptureresult';
-var FAILURE_EVENT = 'pendingcaptureerror';
+const SUCCESS_EVENT = 'pendingcaptureresult';
+const FAILURE_EVENT = 'pendingcaptureerror';
 
-var sChannel = cordova.addStickyDocumentEventHandler(SUCCESS_EVENT);
-var fChannel = cordova.addStickyDocumentEventHandler(FAILURE_EVENT);
+const sChannel = cordova.addStickyDocumentEventHandler(SUCCESS_EVENT);
+const fChannel = cordova.addStickyDocumentEventHandler(FAILURE_EVENT);
 
 // We fire one of two events in the case where the activity gets killed while
 // the user is capturing audio, image, video, etc. in a separate activity
@@ -35,7 +35,7 @@ document.addEventListener('deviceready', function () {
     document.addEventListener('resume', function (event) {
         if (event.pendingResult && event.pendingResult.pluginServiceName === 'Capture') {
             if (event.pendingResult.pluginStatus === 'OK') {
-                var mediaFiles = helpers.wrapMediaFiles(event.pendingResult.result);
+                const mediaFiles = helpers.wrapMediaFiles(event.pendingResult.result);
                 sChannel.fire(mediaFiles);
             } else {
                 fChannel.fire(event.pendingResult.result);

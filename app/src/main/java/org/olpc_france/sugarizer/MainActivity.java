@@ -20,6 +20,7 @@
 package org.olpc_france.sugarizer;
 
 import android.os.Bundle;
+
 import org.apache.cordova.*;
 
 public class MainActivity extends CordovaActivity
